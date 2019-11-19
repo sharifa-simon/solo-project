@@ -17,6 +17,8 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
+import Teams from '../Teams/Teams';
+
 import './App.css';
 
 class App extends Component {
@@ -38,6 +40,11 @@ class App extends Component {
               exact
               path="/about"
               component={AboutPage}
+            />
+            <Route
+              exact
+              path="/teams"
+              component={Teams}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
