@@ -14,3 +14,5 @@ function* addingSaga() {
         console.log('error posting team', error);
       }
     }
+
+    export default addingSaga;
