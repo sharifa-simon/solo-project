@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-
+import {connect} from 'react-redux';
 
 
 class AddTeam extends Component {
+    state = {
+        team: ''
+    }
 
     handleCancelClick = () => {
         //takes user back to Team page
@@ -22,10 +25,14 @@ class AddTeam extends Component {
                 <h3>Add New Team</h3>
                 Name:<input />
                 <br /> <button onClick={this.handleCancelClick}>Cancel</button><button onClick={this.handleAddTeam}>Add Team</button>
+                <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
             </div>
-
+    
         )
     }
 }
 
-export default AddTeam;
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
+export default connect(mapStateToProps)(AddTeam);
