@@ -16,8 +16,8 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     //takes inputted value from addTeam page and adds to the database
-    const newTeam = req.body;
-    console.log(req.body);
+    const newTeam = req.body.team;
+    console.log('new team',req.body);
     const queryText = `INSERT INTO teams ("team_name")
                       VALUES ($1)`;
     const queryValues = [

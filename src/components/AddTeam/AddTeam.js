@@ -15,7 +15,7 @@ class AddTeam extends Component {
     handleAddTeam = () => {
         //adds new Team to Database and returns user to teams page
         console.log('Adding Team');
-        this.props.dispatch({type: 'POST_TEAM', payload: [this.state.team] });
+        this.props.dispatch({type: 'POST_TEAM', payload: this.state.team });
         this.props.history.push('/teams');
     }
 

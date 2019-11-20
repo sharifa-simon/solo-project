@@ -10,7 +10,7 @@ function* addingSaga() {
 function* addTeam(action) {
     //sends inputted user value from AddTeam to server side post route
     try {
-        yield axios.post('/api/teams', action.payload);
+        yield axios.post('/api/teams', {team: action.payload});
         yield put({ type: 'GET_TEAM' })
     } catch (error) {
         console.log('error posting team', error);
