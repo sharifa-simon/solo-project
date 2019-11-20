@@ -24,12 +24,11 @@ class AddTeam extends Component {
     }
 
     handleInputChangeForNewSkater = (event) => {
-        console.log(event);
         this.setState({
             skater: {
-                name: event.target.value,
-                number: event.target.value,
-                position: event.target.value,
+                ...this.state.skater,
+                [event.target.name]: event.target.value,
+               
             }
         });
       }
@@ -41,15 +40,15 @@ class AddTeam extends Component {
                 Name:<input 
                 type="text"
                 name="name"
-                value={this.state.skater.name} onChange={this.handleInputChangeForNewSkater('name')}/>
+                value={this.state.skater.name} onChange={this.handleInputChangeForNewSkater}/>
                 <br />Number:<input 
                 type="text"
                 name="number"
-                value={this.state.skater.number} onChange={this.handleInputChangeForNewSkater('number')}/>
+                value={this.state.skater.number} onChange={this.handleInputChangeForNewSkater}/>
                 <br />Position:<input 
                 type="text"
                 name="position"
-                value={this.state.skater.position} onChange={this.handleInputChangeForNewSkater('position')}/>
+                value={this.state.skater.position} onChange={this.handleInputChangeForNewSkater}/>
                 <br /> <button onClick={this.handleCancelClick}>Cancel</button>
                 <Link to="/roster"><button onClick={this.handleAddTeam}>Add Skater</button></Link>
 

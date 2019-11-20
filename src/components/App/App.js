@@ -61,7 +61,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/addSkater"
+              path="/addskater"
               component={AddSkater}
             />
             {/* For protected routes, the view could show one of several things on the same route.
