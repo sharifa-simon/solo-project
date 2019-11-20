@@ -12,6 +12,11 @@ class Teams extends Component {
         this.props.dispatch({ type: 'GET_TEAM'});
     }
 
+    deleteTeam = (id) => {
+        //deletes selected button's team to remove from redux state and database
+        this.props.dispatch({type: 'DELETE_TEAM', payload: id});
+    }
+
     handleClickAddTeam = () => {
         //takes user to another page to add a Team
         console.log('Moving to Add Team');
@@ -23,12 +28,11 @@ class Teams extends Component {
             <div>
                 <h3>Teams</h3>
                 <ul>
-                    <li>Atomic Bombshells</li>
-                    <li>Dagger Dolls</li>
                     {this.props.teamReducer.map((team) => {
                         return (
                             <li key={team.id}>
                                 <span>{team.team_name}</span>
+                                <button onClick={()=>this.deleteTeam(team.id)}>Delete</button>
                             </li>
                         );
                     })}

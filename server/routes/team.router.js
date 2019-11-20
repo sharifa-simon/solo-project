@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    //brings teams from database
+    //brings teams from database to client side
     pool.query('SELECT * FROM "teams";').then((result) => {
         res.send(result.rows);
     }).catch((error) => {
@@ -30,5 +30,16 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
         });
 });
+
+router.delete('/:id', (req, res) => {
+    //removes user selected team from database
+    const queryText = 'DELETE FROM teams WHERE id=$1';
+    pool.query(queryText, [req.params.id])
+      .then(() => { res.sendStatus(200); })
+      .catch((err) => {
+        console.log('Error completing DELETE team query', err);
+        res.sendStatus(500);
+      });
+  });
 
 module.exports = router;

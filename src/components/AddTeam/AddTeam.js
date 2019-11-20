@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-
+import { Link } from 'react-router-dom';
 
 class AddTeam extends Component {
     state = {
@@ -10,7 +10,6 @@ class AddTeam extends Component {
     handleCancelClick = () => {
         //takes user back to Team page
         console.log('Cancel clicked');
-        this.props.history.push('/teams');
     }
 
     handleAddTeam = () => {
@@ -35,7 +34,7 @@ class AddTeam extends Component {
                 name="team"
                 value={this.state.team} onChange={this.handleInputChangeForNewTeam}/>
                 <br /> <button onClick={this.handleCancelClick}>Cancel</button>
-                <button onClick={this.handleAddTeam}>Add Team</button>
+                <Link to="/teams"><button onClick={this.handleAddTeam}>Add Team</button></Link>
 
                 <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
