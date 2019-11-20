@@ -37,7 +37,7 @@ class AddTeam extends Component {
                 <br /> <button onClick={this.handleCancelClick}>Cancel</button>
                 <button onClick={this.handleAddTeam}>Add Team</button>
 
-                <pre>{JSON.stringify(this.state.reduxState, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
             </div>
     

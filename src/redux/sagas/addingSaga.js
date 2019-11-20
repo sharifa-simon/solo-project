@@ -3,17 +3,26 @@ import axios from 'axios';
 
 function* addingSaga() {
     yield takeLatest('POST_TEAM', addTeam);
-    
+    yield takeLatest('GET_TEAM', getTeam);
   }
 
   function* addTeam(action){
       //sends inputted user value from AddTeam to server side post route
     try {
         yield axios.post('/api/teams', action.payload);
-        yield put({ type: 'SET_TEAM' })
+        yield put({ type: 'ADD_TEAM' })
       } catch (error) {
         console.log('error posting team', error);
       }
     }
 
+    function* getTeam(action) {
+        try
+        {const teamResponse = yield axios.get('/api/teams');
+        yield put({ type: 'SET_TEAM', payload: teamResponse.data });
+         console.log('getTeam was hit with action:', action);
+        } catch(error){
+            console.log('error fetching teams', error);
+        }
+      }
     export default addingSaga;
