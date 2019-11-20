@@ -11,7 +11,7 @@ function* addTeam(action) {
     //sends inputted user value from AddTeam to server side post route
     try {
         yield axios.post('/api/teams', action.payload);
-        yield put({ type: 'ADD_TEAM' })
+        yield put({ type: 'GET_TEAM' })
     } catch (error) {
         console.log('error posting team', error);
     }
@@ -32,7 +32,7 @@ function* removeTeam(action) {
     //communicates with server side to remove team from database
     try {
         yield axios.delete(`/api/teams/${action.payload}`);
-        yield put({ type: 'REMOVE_TEAM' });
+        yield put({ type: 'GET_TEAM' });
     } catch (error) {
         console.log('error deleting team', error);
     }

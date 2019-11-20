@@ -8,11 +8,13 @@ class Teams extends Component {
         this.getTeams();
     }
 
+    
+
     getTeams = () => {
         this.props.dispatch({ type: 'GET_TEAM'});
     }
 
-    deleteTeam = (id) => {
+    deleteTeams = (id) => {
         //deletes selected button's team to remove from redux state and database
         this.props.dispatch({type: 'DELETE_TEAM', payload: id});
     }
@@ -32,7 +34,7 @@ class Teams extends Component {
                         return (
                             <li key={team.id}>
                                 <span>{team.team_name}</span>
-                                <button onClick={()=>this.deleteTeam(team.id)}>Delete</button>
+                                <button onClick={()=>this.deleteTeams(team.id)}>Delete</button>
                             </li>
                         );
                     })}
