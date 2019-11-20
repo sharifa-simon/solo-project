@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* addingSaga() {
+function* teamSaga() {
     yield takeLatest('POST_TEAM', addTeam);
     yield takeLatest('GET_TEAM', getTeam);
     yield takeLatest('DELETE_TEAM', removeTeam);
@@ -38,4 +38,4 @@ function* removeTeam(action) {
     }
 }
 
-export default addingSaga;
+export default teamSaga;
