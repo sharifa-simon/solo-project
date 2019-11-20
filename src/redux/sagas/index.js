@@ -17,5 +17,6 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     teamSaga(),
+    rosterSaga(),
   ]);
 }
