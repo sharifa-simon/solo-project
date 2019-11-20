@@ -25,6 +25,13 @@ class Teams extends Component {
         this.props.history.push('/addteam');
     }
 
+    viewTeam = (teamClicked) => {
+        //clicked team's select button to move user to roster with id
+          console.log('Team clicked:', teamClicked.id);
+          this.props.dispatch({ type: 'GET_ROSTER', payload: teamClicked});
+          this.props.history.push('/roster');
+      }
+
     render() {
         return (
             <div>
@@ -34,6 +41,7 @@ class Teams extends Component {
                         return (
                             <li key={team.id}>
                                 <span>{team.team_name}</span>
+                                <button onClick={() => this.viewTeam(team)}>Select</button>
                                 <button onClick={()=>this.deleteTeams(team.id)}>Delete</button>
                             </li>
                         );
