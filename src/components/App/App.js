@@ -21,6 +21,7 @@ import Teams from '../Teams/Teams';
 import AddTeam from '../AddTeam/AddTeam';
 import Roster from '../Roster/Roster';
 import AddSkater from '../AddSkater/AddSkater';
+import Profile from '../Profile/Profile';
 
 import './App.css';
 
@@ -63,6 +64,11 @@ class App extends Component {
               exact
               path="/addskater"
               component={AddSkater}
+            />
+            <Route
+              exact
+              path="/profile"
+              component={Profile}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
