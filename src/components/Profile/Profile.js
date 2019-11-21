@@ -7,7 +7,7 @@ class AddTeam extends Component {
     render() {
         return (
             <div>
-                <h3>Roster</h3>
+                <h3>Profile</h3>
 
                 <pre>{JSON.stringify(this.props, null, 2)}</pre>
             </div>

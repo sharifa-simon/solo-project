@@ -21,6 +21,7 @@ import Teams from '../Teams/Teams';
 import AddTeam from '../AddTeam/AddTeam';
 import Roster from '../Roster/Roster';
 import AddSkater from '../AddSkater/AddSkater';
+import Profile from '../Profile/Profile';
 
 import './App.css';
 

@@ -31,7 +31,7 @@ class AddTeam extends Component {
 
     selectSkater = (skaterClicked) => {
         //clicked movie image moves user to details with id
-          console.log('Movie title clicked:', skaterClicked.id);
+          console.log('Skater clicked:', skaterClicked.id);
           this.props.dispatch({ type: 'GET_PROFILE', payload: skaterClicked});
           this.props.history.push('/profile');
       }
