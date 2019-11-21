@@ -1,6 +1,6 @@
 const rosterReducer = (state = [], action) => {
     if (action.type === "SET_ROSTER") {
-        return state, action.payload;
+        return action.payload;
     } return state
 }
 
