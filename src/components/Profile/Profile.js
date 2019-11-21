@@ -8,6 +8,10 @@ class AddTeam extends Component {
         this.props.history.push('/roster')
     }
 
+    componentDidMount() {
+        let skaterId = this.props.match.params.id
+        this.props.dispatch({type: 'SET_PROFILE', payload: skaterId})
+    }
 
     render() {
         return (
