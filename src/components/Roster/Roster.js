@@ -29,6 +29,13 @@ class AddTeam extends Component {
         this.props.dispatch({ type: 'GET_ROSTER' });
     }
 
+    selectSkater = (skaterClicked) => {
+        //clicked movie image moves user to details with id
+          console.log('Movie title clicked:', skaterClicked.id);
+          this.props.dispatch({ type: 'GET_PROFILE', payload: skaterClicked});
+          this.props.history.push('/profile');
+      }
+
     render() {
         return (
             <div>
@@ -46,7 +53,7 @@ class AddTeam extends Component {
                                                 <option value="Off Skates">Off Skates</option>
                                                 <option value="No">No</option></select>
                                         </span>
-                                        <br /> <button key={skater.id}>Select</button>
+                                        <br /> <button key={skater.id} onClick={() => this.selectSkater(skater)}>Select</button>
                                         <button onClick={() => this.deleteSkater(skater.id)}>Delete</button>
                                     </li>
                                 );
