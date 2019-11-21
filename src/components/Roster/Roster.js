@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 class AddTeam extends Component {
 
+
     state = {
         skater_id: '',
         attend_type: '',
@@ -32,6 +33,7 @@ class AddTeam extends Component {
         return (
             <div>
                 <h3>Roster</h3>
+
                 <form>
                     <label>
                         <ul>
@@ -54,6 +56,7 @@ class AddTeam extends Component {
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
+
 
                 <button onClick={this.handleClickAddSkater}>Add Skater</button>
                 <pre>{JSON.stringify(this.props, null, 2)}</pre>

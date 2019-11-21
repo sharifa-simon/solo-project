@@ -25,7 +25,9 @@ class Teams extends Component {
 
     viewTeam = (teamClicked) => {
         //clicked team's select button to move user to roster with id
-        console.log('Team clicked:', teamClicked);
+ 
+        console.log('Team clicked:', teamClicked.id);
+
         this.props.dispatch({ type: 'GET_ROSTER', payload: teamClicked });
         this.props.history.push('/roster');
     }
