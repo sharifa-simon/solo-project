@@ -39,7 +39,7 @@ class Teams extends Component {
                         return (
                             <li key={team.id}>
                                 <span>{team.team_name}</span>
-                                <button onClick={() => this.viewTeam(team)}>Select</button>
+                                <button onClick={() => this.viewTeam(team.id)}>Select</button>
                                 <button onClick={() => this.deleteTeams(team.id)}>Delete</button>
                             </li>
                         );
