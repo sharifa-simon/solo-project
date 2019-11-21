@@ -9,9 +9,9 @@ class AddTeam extends Component {
         this.props.history.push('/addskater');
     }
     
-    deleteTeams = (id) => {
-        //deletes selected button's team to remove from redux state and database
-        this.props.dispatch({ type: 'DELETE_TEAM', payload: id });
+    deleteSkater = (id) => {
+        //deletes selected button's skater to remove from redux state and database
+        this.props.dispatch({ type: 'DELETE_SKATER', payload: id });
     }
 
     
