@@ -8,7 +8,7 @@ function* profileSaga() {
 function* profileDetails(action) {
     console.log('skater details', action);
     const profileDetailsResponse = yield axios.get(`/api/profile/${action.payload.id}`);
-    yield put({ type: 'SET_DETAILS', payload: profileDetailsResponse.data});
+    yield put({ type: 'SET_PROFILE', payload: profileDetailsResponse.data});
 }
 
 export default profileSaga;

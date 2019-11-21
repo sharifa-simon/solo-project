@@ -3,6 +3,17 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
+
+router.get('/:id', (req, res) => {
+    // gets all available movie data from movie table database
+    console.log('GET /api/profile/');
+    pool.query('SELECT * from "skaters" WHERE id=$1;', [req.params.id]).then((result) => {
+        res.send(result.rows[0]);
+    }).catch((error) => {
+        console.log('Error GET /api/profile', error)
+        res.sendStatus(500);
+    });
+})
 // router.get('/', (req, res) => {
 //     //brings teams from database to client side
 //     pool.query('SELECT * FROM "teams";').then((result) => {
