@@ -6,9 +6,18 @@ class AddTeam extends Component {
     state = {
         skater: {
         name: '',
+        team_id: 48,
         number: '',
         position:'',
         }
+    }
+
+    componentDidMount() {
+        this.getTeams();
+    }
+
+    getTeams = () => {
+        this.props.dispatch({ type: 'GET_TEAM' });
     }
 
     handleCancelClick = () => {
@@ -18,8 +27,8 @@ class AddTeam extends Component {
 
     handleAddSkater = () => {
         //adds new Skater to Database and returns user to roster page
-        console.log('Adding Team');
-        this.props.dispatch({type: 'POST_TEAM', payload: this.state.skater});
+        console.log('Adding Skater');
+        this.props.dispatch({type: 'POST_SKATER', payload: this.state.skater});
         this.props.history.push('/roster');
     }
 
@@ -50,10 +59,11 @@ class AddTeam extends Component {
                 name="position"
                 value={this.state.skater.position} onChange={this.handleInputChangeForNewSkater}/>
                 <br /> <button onClick={this.handleCancelClick}>Cancel</button>
-                <Link to="/roster"><button onClick={this.handleAddTeam}>Add Skater</button></Link>
+                <Link to="/roster"><button onClick={this.handleAddSkater}>Add Skater</button></Link>
 
                 <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
             </div>
     
         )
