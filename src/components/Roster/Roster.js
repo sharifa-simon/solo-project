@@ -3,19 +3,43 @@ import {connect} from 'react-redux';
 
 class AddTeam extends Component {
 
-    componentDidMount(){
-        this.getRoster();
+    handleClickAddSkater = () => {
+        //takes user to another page to add a Team
+        console.log('Moving to Add Skater');
+        this.props.history.push('/addskater');
     }
     
-    getRoster = () => {
-        this.props.dispatch({ type: 'SET_ROSTER' });
+    deleteTeams = (id) => {
+        //deletes selected button's team to remove from redux state and database
+        this.props.dispatch({ type: 'DELETE_TEAM', payload: id });
     }
+
+    
+    componentDidMount(){
+        // this.getRoster();
+    }
+    
+    // getRoster = () => {
+    //     this.props.dispatch({ type: 'SET_ROSTER' });
+    // }
     render() {
         return (
             <div>
                 <h3>Roster</h3>
-               
-                {this.props.rosterReducer}
+                <ul>
+                    {this.props.rosterReducer.map((skater) => {
+                        return (
+                            <li key={skater.id}>
+                                <span>{skater.skater_name}</span>
+                                <button >Select</button>
+                                <button onClick={() => this.deleteSkater(skater.id)}>Delete</button>
+                            </li>
+                        );
+                    })}
+                </ul>
+                
+
+                <button onClick={this.handleClickAddSkater}>Add Skater</button>
                 <pre>{JSON.stringify(this.props, null, 2)}</pre>
             </div>
     
