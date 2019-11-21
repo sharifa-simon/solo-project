@@ -5,9 +5,9 @@ class AddTeam extends Component {
 
     handleBackButton = () => {
         console.log('Back to roster');
-    
         this.props.history.push('/roster')
     }
+
 
     render() {
         return (

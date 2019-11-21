@@ -14,6 +14,12 @@ class AddTeam extends Component {
         this.getRoster();
     }
 
+    submitFormHandler = event => {
+        console.log('submit clicked');
+        
+        event.preventDefault();
+    }
+
     handleClickAddSkater = () => {
         //takes user to another page to add a Team
         console.log('Moving to Add Skater');
@@ -61,7 +67,7 @@ class AddTeam extends Component {
                         </ul>
 
                     </label>
-                    <input type="submit" value="Submit" />
+                    <input onClick={this.submitFormHandler}type="submit" value="Submit" />
                 </form>
 
 
