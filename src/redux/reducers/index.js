@@ -4,6 +4,7 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 import teamReducer from './addingReducers';
 import rosterReducer from './rosterReducer';
+import profileReducer from './profileReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   teamReducer, //holds new teams added by user
   rosterReducer, //holds new skaters added by user
+  profileReducer,
 });
 
 export default rootReducer;
