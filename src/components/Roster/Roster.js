@@ -5,9 +5,10 @@ class AddTeam extends Component {
 
 
     state = {
+        practice: {
         skater_id: '',
         attend_type: '',
-        date: 20 / 11 / 2019
+        }
     }
 
     componentDidMount() {
@@ -18,6 +19,8 @@ class AddTeam extends Component {
         console.log('submit clicked');
         
         event.preventDefault();
+        this.props.dispatch({type: 'POST_ATTEND', payload: this.state.practice });
+        ;
     }
 
     handleClickAddSkater = () => {
@@ -36,11 +39,32 @@ class AddTeam extends Component {
     }
 
     selectSkater = (skaterClicked) => {
-        //clicked movie image moves user to details with id
+        //clicked skater button moves user to profile with id
           console.log('Skater clicked:', skaterClicked.id);
           this.props.dispatch({ type: 'GET_PROFILE', payload: skaterClicked});
-          this.props.history.push('/profile');
+          this.props.history.push(`/profile/${skaterClicked}`);
       }
+
+
+      handleChangeFor = propertyName => event => {
+        this.setState({
+            practice: {
+                ...this.state.practice,
+                [propertyName]: event.target.value,
+            }
+        });
+    }
+
+    handleForID = propertyName => event => {
+        event.preventDefault();
+        this.setState({
+            practice: {
+                ...this.state.practice,
+                [propertyName]: event.target.value,
+            }
+        });
+    }
+    
 
     render() {
         return (
@@ -53,13 +77,14 @@ class AddTeam extends Component {
                             {this.props.rosterReducer.map((skater) => {
                                 return (
                                     <li key={skater.id + 1}>
-                                        <span>{skater.skater_name} - #{skater.number} - {skater.position}
-                                            <select key={skater.id} value={this.state.attend_type} name="attend_type">
+                                        <span> <span onClick={() => this.selectSkater(skater)}>{skater.skater_name}</span> - #{skater.number} - {skater.position}
+                                            <select key={skater.id} value={this.state.attend_type} onChange={this.handleChangeFor('attend_type')} name="attend_type">
+                                                <option value="On Skates" ></option>
                                                 <option value="On Skates">On Skates</option>
                                                 <option value="Off Skates">Off Skates</option>
-                                                <option value="No">No</option></select>
+                                                <option value="No" >No</option></select>
                                         </span>
-                                        <br /> <button key={skater.id} onClick={() => this.selectSkater(skater)}>Select</button>
+                                        <br /> <button value={skater.id} onClick={this.handleForID('skater_id')}>Select</button>
                                         <button onClick={() => this.deleteSkater(skater.id)}>Delete</button>
                                     </li>
                                 );
@@ -73,6 +98,7 @@ class AddTeam extends Component {
 
                 <button onClick={this.handleClickAddSkater}>Add Skater</button>
                 <pre>{JSON.stringify(this.props, null, 2)}</pre>
+                <pre>{JSON.stringify(this.state, null, 2)}</pre>
             </div>
 
         )

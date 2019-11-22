@@ -67,7 +67,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/profile"
+              path="/profile/:id"
               component={Profile}
             />
             {/* For protected routes, the view could show one of several things on the same route.

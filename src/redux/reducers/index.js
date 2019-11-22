@@ -5,6 +5,7 @@ import user from './userReducer';
 import teamReducer from './addingReducers';
 import rosterReducer from './rosterReducer';
 import profileReducer from './profileReducer';
+import attendReducer from './attendReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   teamReducer, //holds new teams added by user
   rosterReducer, //holds new skaters added by user
   profileReducer,
+  attendReducer,
 });
 
 export default rootReducer;
