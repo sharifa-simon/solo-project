@@ -58,12 +58,12 @@ class AddTeam extends Component {
                 type="text"
                 name="position"
                 value={this.state.skater.position} onChange={this.handleInputChangeForNewSkater}/>
-                <br /> <button onClick={this.handleCancelClick}>Cancel</button>
-                <Link to="/roster"><button onClick={this.handleAddSkater}>Add Skater</button></Link>
+                <br /> <Link to="/roster"><button onClick={this.handleCancelClick}>Cancel</button></Link>
+                <button onClick={this.handleAddSkater}>Add Skater</button>
 
-                <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
+                {/* <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre> */}
             </div>
     
         )

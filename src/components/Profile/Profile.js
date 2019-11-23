@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class AddTeam extends Component {
 
@@ -9,14 +10,15 @@ class AddTeam extends Component {
     }
 
     componentDidMount() {
-        this.getProfile();
-        this.getAttend();
+        // this.getProfile();
+        // this.getAttend();
+
     }
 
-    getProfile = () =>{
-        let skaterId = this.props.match.params.id
-        this.props.dispatch({type: 'SET_PROFILE', payload: skaterId})
-    }
+    // getProfile = () =>{
+    //     let skaterId = this.props.match.params.id
+    //     this.props.dispatch({type: 'SET_PROFILE', payload: skaterId})
+    // }
 
     getAttend = () =>{
         this.props.dispatch({type: 'GET_ATTEND'})
@@ -33,24 +35,17 @@ class AddTeam extends Component {
                 <br />Position: {this.props.profileReducer.position}
 
                 <p>Practices Attended</p>
-                <ul>
-                {this.props.rosterReducer.map((date) => {
+            
+                            <ul>{this.props.attendReducer.map((date) => {
                                 return (
                                     <li key={date.id + 1}>
-                                        <span> {date.date}
-                                        {date.attend_type}
-                                            
-                                        </span>
+                                        <span> {date.date} {date.attend_type}</span>
                                     </li>
                                 );
                             })}
+                        </ul>
 
-                    <li>date - attendance type</li>
-
-                    
-                </ul>
-
-                <pre>{JSON.stringify(this.props, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
             </div>
 
         )

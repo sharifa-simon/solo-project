@@ -48,7 +48,7 @@ class Teams extends Component {
                     })}
                 </ul>
                 <br /> <button onClick={this.handleClickAddTeam}>Add Team</button>
-                <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
+                
             </div>
 
         )

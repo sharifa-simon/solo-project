@@ -46,7 +46,7 @@ class AddTeam extends Component {
       }
 
 
-      handleChangeFor = propertyName => event => {
+      handleChangeFor = propertyName => (event, skaterId) => {
         this.setState({
             practice: {
                 ...this.state.practice,
@@ -96,9 +96,9 @@ class AddTeam extends Component {
                 </form>
 
 
+
                 <button onClick={this.handleClickAddSkater}>Add Skater</button>
-                <pre>{JSON.stringify(this.props, null, 2)}</pre>
-                <pre>{JSON.stringify(this.state, null, 2)}</pre>
+                
             </div>
 
         )

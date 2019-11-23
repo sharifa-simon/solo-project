@@ -9,7 +9,7 @@ function* attendSaga() {
 function* addAttend(action) {
     //sends user selected values from Roster to server side attend post route
     try {
-        yield axios.post('/api/attend',  action.payload);
+        yield axios.post(`/api/attend/${action.payload.skater_id}`,  action.payload);
         yield put({ type: 'GET_ATTEND' })
     } catch (error) {
         console.log('error posting attendance', error);
@@ -18,7 +18,7 @@ function* addAttend(action) {
 
 function* attendDetails(action) {
     console.log('attendance details', action);
-    const attendDetailsResponse = yield axios.get(`/api/attend/`);
+    const attendDetailsResponse = yield axios.get(`/api/attend`);
     yield put({ type: 'SET_ATTEND', payload: attendDetailsResponse.data});
 }
 

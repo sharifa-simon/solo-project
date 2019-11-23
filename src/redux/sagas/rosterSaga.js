@@ -19,7 +19,7 @@ function* addSkater(action) {
 
 function* rosterDetails(action) {
     //communicates with server route to get skaters from database
-    console.log('roster details', action);
+   
     try {
     const rosterResponse = yield axios.get(`/api/roster/`);
     yield put({ type: 'SET_ROSTER', payload: rosterResponse.data});
