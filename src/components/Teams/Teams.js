@@ -30,6 +30,7 @@ class Teams extends Component {
         console.log('Team clicked:', teamClicked);
         this.props.dispatch({ type: 'GET_ROSTER', payload: teamClicked.id});
         this.props.history.push(`/roster/:skaterId`);
+        
     }
 
     render() {

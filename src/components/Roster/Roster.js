@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
+import { Link } from 'react-router-dom';
+
 class AddTeam extends Component {
 
 
@@ -27,8 +29,7 @@ class AddTeam extends Component {
 
     handleClickAddSkater = () => {
         //takes user to another page to add a Team
-        console.log('Moving to Add Skater');
-        
+        console.log('Moving to Add Skater:' );
     }
 
     deleteSkater = (id) => {
@@ -99,11 +100,9 @@ class AddTeam extends Component {
                     <input onClick={this.submitFormHandler}type="submit" value="Submit" />
                 </form>
 
-                <div>
-        <h2>{this.props.match.params.id}</h2>
-      </div>
+                
 
-                <button onClick={this.handleClickAddSkater}>Add Skater</button>
+                <Link to="/addskater"><button onClick={this.handleClickAddSkater}>Add Skater</button></Link>
                 
             </div>
 
