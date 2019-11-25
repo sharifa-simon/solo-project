@@ -66,7 +66,7 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/addteam"
+              path="/addteam/"
               component={AddTeam}
             />
             <ProtectedRoute
