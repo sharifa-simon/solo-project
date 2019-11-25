@@ -32,7 +32,7 @@ class AddTeam extends Component {
         this.props.dispatch({ type: 'POST_SKATER', payload: this.state.skater });
             //clicked team's select button to move user to roster with id
             this.props.dispatch({ type: 'GET_ROSTER', payload: addteam.id});
-            this.props.history.push(`/roster/:skaterId`);
+          
             
         
 

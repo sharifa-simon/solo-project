@@ -80,7 +80,7 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/profile/"
+              path="/profile/:profileId"
               component={Profile}
             />
             {/* If none of the other routes matched, we will show a 404. */}

@@ -32,9 +32,11 @@ class AddTeam extends Component {
         console.log('Moving to Add Skater:' );
     }
 
-    deleteSkater = (id) => {
+    deleteSkater = (skaterid) => {
+        console.log('DELETE:', skaterid);
+        
         //deletes selected button's skater to remove from redux state and database
-        this.props.dispatch({ type: 'DELETE_SKATER', payload: id });
+        this.props.dispatch({ type: 'DELETE_SKATER', payload: skaterid });
     }
 
     // getRoster = () => {

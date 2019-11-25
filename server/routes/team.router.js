@@ -33,7 +33,11 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     //removes user selected team from database
-    const queryText = 'DELETE FROM teams WHERE id=$1';
+    const queryText = `
+    WITH tmp AS (SELECT "team_id" FROM "skaters" WHERE "team_id"=$1),
+    upd AS (UPDATE "skaters" SET "team_id" = NULL WHERE "team_id"=$1)
+DELETE FROM "teams" 
+  WHERE "id" IN (SELECT "team_id" FROM tmp)`;
     pool.query(queryText, [req.params.id])
       .then(() => { res.sendStatus(200); })
       .catch((err) => {
