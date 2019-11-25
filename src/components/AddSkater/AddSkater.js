@@ -6,7 +6,7 @@ class AddTeam extends Component {
     state = {
         skater: {
         name: '',
-        team_id: 48,
+        team_id: '',
         number: '',
         position:'',
         }
@@ -29,7 +29,7 @@ class AddTeam extends Component {
         //adds new Skater to Database and returns user to roster page
         console.log('Adding Skater');
         this.props.dispatch({type: 'POST_SKATER', payload: this.state.skater});
-        this.props.history.push('/roster');
+       
     }
 
     handleInputChangeForNewSkater = (event) => {

@@ -11,7 +11,7 @@ function* profileDetails(action) {
     console.log('you want this one', profileDetailsResponse.data);
     
     yield put({ type: 'SET_PROFILE', payload: profileDetailsResponse.data});
-    yield put({ type: 'GET_ATTEND', payload: {skater_id: profileDetailsResponse.data.id}})
+    
 }
 
 export default profileSaga;

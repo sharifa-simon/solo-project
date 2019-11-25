@@ -45,31 +45,9 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
-            <Route
-              exact
-              path="/teams"
-              component={Teams}
-            />
-            <Route
-              exact
-              path="/addteam"
-              component={AddTeam}
-            />
-            <Route
-              exact
-              path="/roster"
-              component={Roster}
-            />
-            <Route
-              exact
-              path="/addskater"
-              component={AddSkater}
-            />
-            <Route
-              exact
-              path="/profile/:id"
-              component={Profile}
-            />
+            
+            
+            
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -83,8 +61,27 @@ class App extends Component {
             they will see the info page instead. */}
             <ProtectedRoute
               exact
-              path="/info"
-              component={InfoPage}
+              path="/teams"
+              component={Teams}
+            />
+            <ProtectedRoute
+              exact
+              path="/addteam"
+              component={AddTeam}
+            />
+            <ProtectedRoute
+              path="/roster/:skaterId"
+              component={Roster}
+            />
+            <ProtectedRoute
+              exact
+              path="/addskater"
+              component={AddSkater}
+            />
+            <ProtectedRoute
+              exact
+              path="/profile/"
+              component={Profile}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

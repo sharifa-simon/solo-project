@@ -11,7 +11,7 @@ class AddTeam extends Component {
 
     componentDidMount() {
         // this.getProfile();
-        // this.getAttend();
+        this.getAttend();
 
     }
 

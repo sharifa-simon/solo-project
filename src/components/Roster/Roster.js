@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { withRouter } from "react-router";
 class AddTeam extends Component {
 
 
@@ -12,12 +12,14 @@ class AddTeam extends Component {
     }
 
     componentDidMount() {
-        this.getRoster();
+        // this.getRoster();
+        // this.forHistory();
+        
     }
 
+    
     submitFormHandler = event => {
         console.log('submit clicked');
-        
         event.preventDefault();
         this.props.dispatch({type: 'POST_ATTEND', payload: this.state.practice });
         ;
@@ -26,7 +28,7 @@ class AddTeam extends Component {
     handleClickAddSkater = () => {
         //takes user to another page to add a Team
         console.log('Moving to Add Skater');
-        this.props.history.push('/addskater');
+        
     }
 
     deleteSkater = (id) => {
@@ -34,9 +36,9 @@ class AddTeam extends Component {
         this.props.dispatch({ type: 'DELETE_SKATER', payload: id });
     }
 
-    getRoster = () => {
-        this.props.dispatch({ type: 'GET_ROSTER' });
-    }
+    // getRoster = () => {
+    //     this.props.dispatch({ type: 'GET_ROSTER' });
+    // }
 
     selectSkater = (skaterClicked) => {
         //clicked skater button moves user to profile with id
@@ -47,12 +49,14 @@ class AddTeam extends Component {
 
 
       handleChangeFor = propertyName => (event, skaterId) => {
+        this.props.dispatch({type: 'POST_ATTEND', payload: this.state.practice });
         this.setState({
             practice: {
                 ...this.state.practice,
                 [propertyName]: event.target.value,
             }
         });
+        
     }
 
     handleForID = propertyName => event => {
@@ -95,7 +99,9 @@ class AddTeam extends Component {
                     <input onClick={this.submitFormHandler}type="submit" value="Submit" />
                 </form>
 
-
+                <div>
+        <h2>{this.props.match.params.id}</h2>
+      </div>
 
                 <button onClick={this.handleClickAddSkater}>Add Skater</button>
                 
@@ -108,4 +114,4 @@ class AddTeam extends Component {
 const mapStateToProps = (reduxState) => {
     return reduxState;
 };
-export default connect(mapStateToProps)(AddTeam);
+export default withRouter(connect(mapStateToProps)(AddTeam));

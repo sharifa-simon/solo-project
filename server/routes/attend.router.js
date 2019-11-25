@@ -3,9 +3,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-router.get('/:id', (req, res) => {
+router.get('/', (req, res) => {
     console.log('GET /api/attend/');
-    pool.query('SELECT * from "attendance" WHERE "skater_id"=$1', [req.params.id]).then((result) => {
+    pool.query('SELECT * from "attendance" ').then((result) => {
         res.send(result.rows);
     }).catch((error) => {
         console.log('Error GET /api/attend', error)

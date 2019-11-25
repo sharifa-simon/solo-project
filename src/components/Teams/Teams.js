@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { Link } from 'react-router-dom';
+import { withRouter } from "react-router";
 
 class Teams extends Component {
 
+
     componentDidMount() {
         this.getTeams();
+        
     }
 
     getTeams = () => {
@@ -20,16 +23,13 @@ class Teams extends Component {
     handleClickAddTeam = () => {
         //takes user to another page to add a Team
         console.log('Moving to Add Team');
-        this.props.history.push('/addteam');
     }
 
     viewTeam = (teamClicked) => {
         //clicked team's select button to move user to roster with id
- 
-        console.log('Team clicked:', teamClicked.id);
-
-        this.props.dispatch({ type: 'GET_ROSTER', payload: teamClicked });
-        this.props.history.push('/roster');
+        console.log('Team clicked:', teamClicked);
+        this.props.dispatch({ type: 'GET_ROSTER', payload: teamClicked.id});
+        this.props.history.push(`/roster/:skaterId`);
     }
 
     render() {
@@ -41,13 +41,13 @@ class Teams extends Component {
                         return (
                             <li key={team.id}>
                                 <span>{team.team_name}</span>
-                                <button onClick={() => this.viewTeam(team)}>Select</button>
+                                <Link to="/roster/:skaterId"><button onClick={() => this.viewTeam(team)}>Select</button></Link>
                                 <button onClick={() => this.deleteTeams(team.id)}>Delete</button>
                             </li>
                         );
                     })}
                 </ul>
-                <br /> <button onClick={this.handleClickAddTeam}>Add Team</button>
+                <br /> <Link to="/addteam"><button onClick={this.handleClickAddTeam}>Add Team</button></Link>
                 
             </div>
 
@@ -58,4 +58,4 @@ class Teams extends Component {
 const mapStateToProps = (reduxState) => {
     return reduxState;
 };
-export default connect(mapStateToProps)(Teams);
+export default withRouter(connect(mapStateToProps)(Teams));

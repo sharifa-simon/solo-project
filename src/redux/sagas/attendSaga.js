@@ -9,7 +9,7 @@ function* attendSaga() {
 function* addAttend(action) {
     //sends user selected values from Roster to server side attend post route
     try {
-        yield axios.post(`/api/attend/${action.payload.skater_id}`,  action.payload);
+        yield axios.post('/api/attend/',  action.payload);
         yield put({ type: 'GET_ATTEND' })
     } catch (error) {
         console.log('error posting attendance', error);

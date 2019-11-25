@@ -3,10 +3,12 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-router.get('/', (req, res) => {
+router.get(`/:skaterId`, (req, res) => {
     //brings teams from database to client side
-    console.log('GET /api/details');
-    pool.query(`SELECT * FROM "skaters"`).then((result) => {
+    console.log('GET /api/roster');
+    pool.query(`SELECT * FROM "skaters" 
+    JOIN "teams" ON "skaters"."team_id"="teams"."id"
+    WHERE "team_id"=$1;`, [req.params.skaterId]).then((result) => {
         res.send(result.rows);
     }).catch((error) => {
         console.log('Error GET /api/roster', error)
