@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 
 
 class AddSkater extends Component {
@@ -25,14 +25,14 @@ class AddSkater extends Component {
     handleCancelClick = () => {
         //takes user back to Roster page
         console.log('Cancel clicked');
-        this.props.history.push(`roster/:teamId`)
+        this.props.history.push(`/roster/:teamId`)
     }
 
     handleAddSkater = (addteam) => {
         //adds new Skater to Database and returns user to roster page
-        console.log('Adding Skater', addteam);
+        console.log('Adding Skater', addteam.team_id);
         this.props.dispatch({ type: 'POST_SKATER', payload: this.state.skater });
-        //clicked team's select button to move user to roster with id
+        this.props.history.push(`/roster/${this.state.skater.team_id}`)
     }
 
     handleInputChangeForNewSkater = (event) => {

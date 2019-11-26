@@ -16,6 +16,9 @@ class Profile extends Component {
         this.props.dispatch({ type: 'GET_ATTEND', payload: this.props.match.params.profileId });
     }
 
+    editAttendance = (practice) => {
+        console.log('This date clicked', practice)
+    }
     // getProfile = () =>{
     //     let skaterId = this.props.match.params.id
     //     this.props.dispatch({type: 'SET_PROFILE', payload: skaterId})
@@ -41,6 +44,7 @@ class Profile extends Component {
                     return (
                         <li key={date.id + 1}>
                             <span> {date.date} {date.attend_type}</span>
+                            <button onClick={() => this.editAttendance(date.id)}>Edit</button>
                         </li>
                     );
                 })}

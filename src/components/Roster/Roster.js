@@ -94,8 +94,7 @@ class Roster extends Component {
                                                 <option value="Off Skates">Off Skates</option>
                                                 <option value="No" >No</option></select>
                                         </span>
-                                        <br /> <button value={skater.id} onClick={this.handleForID('skater_id')}>Select</button>
-                                        <button onClick={() => this.deleteSkater(skater.id)}>Delete</button>
+                                        <br /> <button onClick={() => this.deleteSkater(skater.id)}>Delete</button>
                                     </li>
                                 );
                             })}
