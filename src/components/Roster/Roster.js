@@ -3,38 +3,38 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
 
-class AddTeam extends Component {
+class Roster extends Component {
 
 
     state = {
         practice: {
-        skater_id: '',
-        attend_type: '',
+            skater_id: '',
+            attend_type: '',
         }
     }
 
     componentDidMount() {
         // this.getRoster();
         // this.forHistory();
-        
+        this.props.dispatch({ type: 'GET_ROSTER', payload: this.props.match.params.teamId });
     }
 
-    
+
     submitFormHandler = event => {
         console.log('submit clicked');
         event.preventDefault();
-        this.props.dispatch({type: 'POST_ATTEND', payload: this.state.practice });
+        this.props.dispatch({ type: 'POST_ATTEND', payload: this.state.practice });
         ;
     }
 
     handleClickAddSkater = () => {
         //takes user to another page to add a Team
-        console.log('Moving to Add Skater:' );
+        console.log('Moving to Add Skater:');
     }
 
     deleteSkater = (skaterid) => {
         console.log('DELETE:', skaterid);
-        
+
         //deletes selected button's skater to remove from redux state and database
         this.props.dispatch({ type: 'DELETE_SKATER', payload: skaterid });
     }
@@ -45,21 +45,21 @@ class AddTeam extends Component {
 
     selectSkater = (skaterClicked) => {
         //clicked skater button moves user to profile with id
-          console.log('Skater clicked:', skaterClicked.id);
-          this.props.dispatch({ type: 'GET_PROFILE', payload: skaterClicked});
-          this.props.history.push(`/profile/${skaterClicked}`);
-      }
+        console.log('Skater clicked:', skaterClicked);
+        this.props.dispatch({ type: 'GET_PROFILE', payload: skaterClicked });
+        this.props.history.push(`/profile/${skaterClicked}`);
+    }
 
 
-      handleChangeFor = propertyName => (event, skaterId) => {
-        this.props.dispatch({type: 'POST_ATTEND', payload: this.state.practice });
+    handleChangeFor = propertyName => (event, skaterId) => {
+        this.props.dispatch({ type: 'POST_ATTEND', payload: this.state.practice });
         this.setState({
             practice: {
                 ...this.state.practice,
                 [propertyName]: event.target.value,
             }
         });
-        
+
     }
 
     handleForID = propertyName => event => {
@@ -71,7 +71,7 @@ class AddTeam extends Component {
             }
         });
     }
-    
+
 
     render() {
         return (
@@ -84,7 +84,7 @@ class AddTeam extends Component {
                             {this.props.rosterReducer.map((skater) => {
                                 return (
                                     <li key={skater.id + 1}>
-                                        <span> <span onClick={() => this.selectSkater(skater)}>{skater.skater_name}</span> - #{skater.number} - {skater.position}
+                                        <span> <span onClick={() => this.selectSkater(skater.id)}>{skater.skater_name}</span> - #{skater.number} - {skater.position}
                                             <select key={skater.id} value={this.state.attend_type} onChange={this.handleChangeFor('attend_type')} name="attend_type">
                                                 <option value="On Skates" ></option>
                                                 <option value="On Skates">On Skates</option>
@@ -99,13 +99,13 @@ class AddTeam extends Component {
                         </ul>
 
                     </label>
-                    <input onClick={this.submitFormHandler}type="submit" value="Submit" />
+                    <input onClick={this.submitFormHandler} type="submit" value="Submit" />
                 </form>
 
-                
+
 
                 <Link to="/addskater"><button onClick={this.handleClickAddSkater}>Add Skater</button></Link>
-                
+                <pre>{JSON.stringify(this.props, null, 2)}</pre>
             </div>
 
         )
@@ -115,4 +115,4 @@ class AddTeam extends Component {
 const mapStateToProps = (reduxState) => {
     return reduxState;
 };
-export default withRouter(connect(mapStateToProps)(AddTeam));
+export default withRouter(connect(mapStateToProps)(Roster));

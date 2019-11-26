@@ -8,7 +8,7 @@ class Teams extends Component {
 
     componentDidMount() {
         this.getTeams();
-        
+
     }
 
     getTeams = () => {
@@ -28,9 +28,9 @@ class Teams extends Component {
     viewTeam = (teamClicked) => {
         //clicked team's select button to move user to roster with id
         console.log('Team clicked:', teamClicked);
-        this.props.dispatch({ type: 'GET_ROSTER', payload: teamClicked.id});
-        this.props.history.push(`/roster/:skaterId`);
-        
+        this.props.dispatch({ type: 'GET_ROSTER', payload: teamClicked });
+        this.props.history.push(`/roster/${teamClicked}`);
+
     }
 
     render() {
@@ -42,14 +42,14 @@ class Teams extends Component {
                         return (
                             <li key={team.id}>
                                 <span>{team.team_name}</span>
-                                <Link to="/roster/:skaterId"><button onClick={() => this.viewTeam(team)}>Select</button></Link>
+                                <button onClick={() => this.viewTeam(team.id)}>Select</button>
                                 <button onClick={() => this.deleteTeams(team.id)}>Delete</button>
                             </li>
                         );
                     })}
                 </ul>
                 <br /> <Link to="/addteam"><button onClick={this.handleClickAddTeam}>Add Team</button></Link>
-                
+
             </div>
 
         )

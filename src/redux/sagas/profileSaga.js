@@ -6,12 +6,11 @@ function* profileSaga() {
 }
 
 function* profileDetails(action) {
-    console.log('skater details', action.payload.id);
-    const profileDetailsResponse = yield axios.get(`/api/profile/${action.payload.id}`);
-    console.log('you want this one', profileDetailsResponse.data);
-    
-    yield put({ type: 'SET_PROFILE', payload: profileDetailsResponse.data});
-    
+    console.log('skater details', action.payload);
+    const profileDetailsResponse = yield axios.get(`/api/profile/${action.payload}`);
+    console.log('PROFILE DEETS', profileDetailsResponse.data);
+    yield put({ type: 'SET_PROFILE', payload: profileDetailsResponse.data });
+
 }
 
 export default profileSaga;

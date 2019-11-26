@@ -4,10 +4,10 @@ const router = express.Router();
 
 
 
-router.get('/:id', (req, res) => {
+router.get('/:profileId', (req, res) => {
     // gets all available skater data from skater table database
     console.log('GET /api/profile/');
-    pool.query('SELECT * from "skaters" WHERE id=$1;', [req.params.id]).then((result) => {
+    pool.query('SELECT * from "skaters" WHERE id=$1;', [req.params.profileId]).then((result) => {
         res.send(result.rows[0]);
     }).catch((error) => {
         console.log('Error GET /api/profile', error)

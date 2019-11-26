@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
-class AddTeam extends Component {
+class AddSkater extends Component {
     state = {
         skater: {
             name: '',
@@ -15,6 +15,7 @@ class AddTeam extends Component {
 
     componentDidMount() {
         this.getTeams();
+        this.props.dispatch({ type: 'GET_ROSTER', payload: this.props.match.params.teamId });
     }
 
     getTeams = () => {
@@ -30,11 +31,11 @@ class AddTeam extends Component {
         //adds new Skater to Database and returns user to roster page
         console.log('Adding Skater', addteam);
         this.props.dispatch({ type: 'POST_SKATER', payload: this.state.skater });
-            //clicked team's select button to move user to roster with id
-            this.props.dispatch({ type: 'GET_ROSTER', payload: addteam.id});
-          
-            
-        
+        //clicked team's select button to move user to roster with id
+
+
+
+
 
     }
 
@@ -49,7 +50,7 @@ class AddTeam extends Component {
     }
 
     handleChangeFor = propertyName => (event) => {
-console.log(event.target.value);
+        console.log(event.target.value);
 
         this.setState({
             skater: {
@@ -75,8 +76,8 @@ console.log(event.target.value);
                     type="text"
                     name="position"
                     value={this.state.skater.position} onChange={this.handleInputChangeForNewSkater} />
-               <br /> Team: <select key={this.state.skater.id} value={this.state.skater.team_id} onChange={this.handleChangeFor('team_id')} name="team_id">
-               <option value="">Select</option>
+                <br /> Team: <select key={this.state.skater.id} value={this.state.skater.team_id} onChange={this.handleChangeFor('team_id')} name="team_id">
+                    <option value="">Select</option>
                     {this.props.teamReducer.map((team) => {
                         return (
                             <option value={team.id}>{team.team_name}</option>
@@ -87,8 +88,8 @@ console.log(event.target.value);
 
 
                 <br />
-                <br /> <Link to="/roster/:skaterId"><button onClick={this.handleCancelClick}>Cancel</button></Link>
-                <Link to="/roster/:skaterId"> <button onClick={this.handleAddSkater}>Add Skater</button></Link>
+                <br /> <Link to="/roster/:teamId"><button onClick={this.handleCancelClick}>Cancel</button></Link>
+                <Link to="/roster/:teamId"> <button onClick={this.handleAddSkater}>Add Skater</button></Link>
 
                 <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
@@ -102,4 +103,4 @@ console.log(event.target.value);
 const mapStateToProps = (reduxState) => {
     return reduxState;
 };
-export default connect(mapStateToProps)(AddTeam);
+export default connect(mapStateToProps)(AddSkater);
