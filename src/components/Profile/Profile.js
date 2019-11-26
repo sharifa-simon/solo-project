@@ -6,13 +6,14 @@ class Profile extends Component {
 
     handleBackButton = () => {
         console.log('Back to roster');
-        this.props.history.push('/roster')
+        this.props.history.push(`/roster/:teamId`);
     }
 
     componentDidMount() {
         // this.getProfile();
-        this.getAttend();
+        // this.getAttend();
         this.props.dispatch({ type: 'GET_PROFILE', payload: this.props.match.params.profileId });
+        this.props.dispatch({ type: 'GET_ATTEND', payload: this.props.match.params.profileId });
     }
 
     // getProfile = () =>{
@@ -20,9 +21,9 @@ class Profile extends Component {
     //     this.props.dispatch({type: 'SET_PROFILE', payload: skaterId})
     // }
 
-    getAttend = () => {
-        this.props.dispatch({ type: 'GET_ATTEND' })
-    }
+    // getAttend = () => {
+    //     this.props.dispatch({ type: 'GET_ATTEND' })
+    // }
 
 
     render() {

@@ -17,6 +17,7 @@ class Roster extends Component {
         // this.getRoster();
         // this.forHistory();
         this.props.dispatch({ type: 'GET_ROSTER', payload: this.props.match.params.teamId });
+        
     }
 
 
@@ -46,7 +47,7 @@ class Roster extends Component {
     selectSkater = (skaterClicked) => {
         //clicked skater button moves user to profile with id
         console.log('Skater clicked:', skaterClicked);
-        this.props.dispatch({ type: 'GET_PROFILE', payload: skaterClicked });
+        this.props.dispatch({ type: 'GET_PROFILE, GET_ATTEND', payload: skaterClicked });
         this.props.history.push(`/profile/${skaterClicked}`);
     }
 

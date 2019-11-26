@@ -18,7 +18,7 @@ function* addAttend(action) {
 
 function* attendDetails(action) {
     console.log('attendance details', action);
-    const attendDetailsResponse = yield axios.get(`/api/attend`);
+    const attendDetailsResponse = yield axios.get(`/api/attend/${action.payload}`);
     yield put({ type: 'SET_ATTEND', payload: attendDetailsResponse.data});
 }
 
