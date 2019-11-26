@@ -1,9 +1,11 @@
 const express = require('express');
 const pool = require('../modules/pool');
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 const router = express.Router();
 
 
-router.get(`/:teamId`, (req, res) => {
+router.get(`/:teamId`,  rejectUnauthenticated,(req, res) => {
     //brings teams from database to client side
     console.log('GET /api/roster');
     pool.query(`SELECT * FROM "skaters" 
@@ -17,7 +19,7 @@ router.get(`/:teamId`, (req, res) => {
 });
 
 
-router.post('/', (req, res) => {
+router.post('/',  rejectUnauthenticated,(req, res) => {
     //takes inputted value from addSkater page and adds to the database
     const newSkater = req.body;
     console.log('new skater', req.body);
@@ -37,7 +39,7 @@ router.post('/', (req, res) => {
         });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id',  rejectUnauthenticated, (req, res) => {
     //removes user selected skater from database
     const queryText = 'DELETE FROM skaters WHERE id=$1';
     pool.query(queryText, [req.params.id])

@@ -1,10 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 const router = express.Router();
 
 
 
-router.get('/:profileId', (req, res) => {
+router.get('/:profileId',  rejectUnauthenticated, (req, res) => {
     // gets all available skater data from skater table database
     console.log('GET /api/profile/');
     pool.query('SELECT * from "skaters" WHERE id=$1;', [req.params.profileId]).then((result) => {

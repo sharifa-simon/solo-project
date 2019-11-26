@@ -25,6 +25,7 @@ class AddSkater extends Component {
     handleCancelClick = () => {
         //takes user back to Roster page
         console.log('Cancel clicked');
+        this.props.history.push(`roster/:teamId`)
     }
 
     handleAddSkater = (addteam) => {
@@ -32,11 +33,6 @@ class AddSkater extends Component {
         console.log('Adding Skater', addteam);
         this.props.dispatch({ type: 'POST_SKATER', payload: this.state.skater });
         //clicked team's select button to move user to roster with id
-
-
-
-
-
     }
 
     handleInputChangeForNewSkater = (event) => {
@@ -44,14 +40,12 @@ class AddSkater extends Component {
             skater: {
                 ...this.state.skater,
                 [event.target.name]: event.target.value,
-
             }
         });
     }
 
     handleChangeFor = propertyName => (event) => {
         console.log(event.target.value);
-
         this.setState({
             skater: {
                 ...this.state.skater,
@@ -88,8 +82,11 @@ class AddSkater extends Component {
 
 
                 <br />
-                <br /> <Link to="/roster/:teamId"><button onClick={this.handleCancelClick}>Cancel</button></Link>
-                <Link to="/roster/:teamId"> <button onClick={this.handleAddSkater}>Add Skater</button></Link>
+                {/* <br /> <Link to="/roster/:teamId"><button onClick={this.handleCancelClick}>Cancel</button></Link>
+                <Link to="/roster/:teamId"> <button onClick={this.handleAddSkater}>Add Skater</button></Link> */}
+                <br /> <button onClick={this.handleCancelClick}>Cancel</button>
+                <button onClick={this.handleAddSkater}>Add Skater</button>
+
 
                 <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>

@@ -17,7 +17,7 @@ class Roster extends Component {
         // this.getRoster();
         // this.forHistory();
         this.props.dispatch({ type: 'GET_ROSTER', payload: this.props.match.params.teamId });
-        
+
     }
 
 
@@ -52,14 +52,16 @@ class Roster extends Component {
     }
 
 
-    handleChangeFor = propertyName => (event, skaterId) => {
-        this.props.dispatch({ type: 'POST_ATTEND', payload: this.state.practice });
-        this.setState({
-            practice: {
-                ...this.state.practice,
-                [propertyName]: event.target.value,
-            }
-        });
+    handleChangeFor = (attend_type, skater_id) => {
+
+        this.props.dispatch({ type: 'POST_ATTEND', payload: {event: attend_type.target.value, skater_id} });
+        // this.setState({
+        //     practice: {
+        //         ...this.state.practice,
+        //         attend_type: event.target.value,
+        //         skater_id: skaterId,
+        //     }
+        // });
 
     }
 
@@ -86,8 +88,8 @@ class Roster extends Component {
                                 return (
                                     <li key={skater.id + 1}>
                                         <span> <span onClick={() => this.selectSkater(skater.id)}>{skater.skater_name}</span> - #{skater.number} - {skater.position}
-                                            <select key={skater.id} value={this.state.attend_type} onChange={this.handleChangeFor('attend_type')} name="attend_type">
-                                                <option value="On Skates" ></option>
+                                            <select key={skater.id} value={this.state.attend_type} onChange={(event)=>this.handleChangeFor(event, skater.id)} name="attend_type">
+                                                <option value="" ></option>
                                                 <option value="On Skates">On Skates</option>
                                                 <option value="Off Skates">Off Skates</option>
                                                 <option value="No" >No</option></select>
@@ -105,7 +107,9 @@ class Roster extends Component {
 
 
 
+                <Link to="/home"><button>Home</button></Link>
                 <Link to="/addskater"><button onClick={this.handleClickAddSkater}>Add Skater</button></Link>
+                <pre>{JSON.stringify(this.state, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props, null, 2)}</pre>
             </div>
 
