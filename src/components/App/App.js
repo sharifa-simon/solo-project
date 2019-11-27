@@ -22,6 +22,7 @@ import AddTeam from '../AddTeam/AddTeam';
 import Roster from '../Roster/Roster';
 import AddSkater from '../AddSkater/AddSkater';
 import Profile from '../Profile/Profile';
+import EditProfile from '../EditProfile/EditProfile';
 
 import './App.css';
 
@@ -77,6 +78,11 @@ class App extends Component {
               exact
               path="/addskater"
               component={AddSkater}
+            />
+            <ProtectedRoute
+              exact
+              path="/profile/edit/:id"
+              component={EditProfile}
             />
             <ProtectedRoute
               exact

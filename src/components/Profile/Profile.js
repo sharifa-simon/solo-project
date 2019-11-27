@@ -9,6 +9,11 @@ class Profile extends Component {
         this.props.history.push(`/roster/:teamId`);
     }
 
+    editSkater = () => {
+        console.log('edit skater clicked');
+        
+    }
+
     componentDidMount() {
         // this.getProfile();
         // this.getAttend();
@@ -37,6 +42,7 @@ class Profile extends Component {
                 {this.props.profileReducer.skater_name}
                 <br />#{this.props.profileReducer.number}
                 <br />Position: {this.props.profileReducer.position}
+                <button onClick={this.editSkater}>Edit Skater</button>
 
                 <p>Practices Attended</p>
 
