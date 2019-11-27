@@ -4,14 +4,14 @@ import { withRouter } from "react-router";
 
 class Profile extends Component {
 
-    handleBackButton = () => {
-        console.log('Back to roster');
-        this.props.history.push(`/roster/:teamId`);
+    handleBackButton = (teamroster) => {
+        console.log('Back to roster', teamroster);
+        this.props.history.push(`/roster/${teamroster}`);
     }
 
-    editSkater = () => {
-        console.log('edit skater clicked');
-        
+    editSkater = (skaterprofile) => {
+        console.log('edit skater clicked', skaterprofile);
+        this.props.history.push(`/profile/edit/${skaterprofile}`)
     }
 
     componentDidMount() {
@@ -37,12 +37,12 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.handleBackButton}>Back to Roster</button>
+                <button onClick={() => this.handleBackButton(this.props.profileReducer.team_id)}>Back to Roster</button>
                 <h3>Profile</h3>
                 {this.props.profileReducer.skater_name}
                 <br />#{this.props.profileReducer.number}
                 <br />Position: {this.props.profileReducer.position}
-                <button onClick={this.editSkater}>Edit Skater</button>
+                <button onClick={() => this.editSkater(this.props.profileReducer.id)}>Edit Skater</button>
 
                 <p>Practices Attended</p>
 
