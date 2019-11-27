@@ -13,18 +13,18 @@ class EditProfile extends Component {
         }
     
         componentDidMount() {
-            this.getTeams();
-            this.props.dispatch({ type: 'GET_ROSTER', payload: this.props.match.params.teamId });
+            // this.getTeams();
+            this.props.dispatch({ type: 'GET_PROFILE', payload: this.props.match.params.profileId });
         }
     
-        getTeams = () => {
-            this.props.dispatch({ type: 'GET_TEAM' });
-        }
+        // getTeams = () => {
+        //     this.props.dispatch({ type: 'GET_TEAM' });
+        // }
     
         handleCancelClick = () => {
             //takes user back to Roster page
             console.log('Cancel clicked');
-            this.props.history.push(`/roster/:teamId`)
+            this.props.history.push(`/profile/${this.props.match.params.profileId}`)
         }
     
         handleAddSkater = (addteam) => {
@@ -59,15 +59,17 @@ class EditProfile extends Component {
                     <h3>Edit Skater</h3>
                     Name:<input
                         type="text"
-                        name="name"
+                        name="name" placeholder={this.props.profileReducer.skater_name}
                         value={this.state.skater.name} onChange={this.handleInputChangeForNewSkater} />
                     <br />Number:<input
                         type="text"
                         name="number"
+                        placeholder={this.props.profileReducer.number}
                         value={this.state.skater.number} onChange={this.handleInputChangeForNewSkater} />
                     <br />Position:<input
                         type="text"
                         name="position"
+                        placeholder={this.props.profileReducer.position}
                         value={this.state.skater.position} onChange={this.handleInputChangeForNewSkater} />
                     <br /> Team: <select key={this.state.skater.id} value={this.state.skater.team_id} onChange={this.handleChangeFor('team_id')} name="team_id">
                         <option value="">Select</option>
@@ -90,6 +92,9 @@ class EditProfile extends Component {
                     <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                     <pre>{JSON.stringify(this.state, null, 2)}</pre>
                     <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
+                    <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre>
     
                 </div>
 

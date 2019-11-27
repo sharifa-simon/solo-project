@@ -24,8 +24,8 @@ class AddSkater extends Component {
 
     handleCancelClick = () => {
         //takes user back to Roster page
-        console.log('Cancel clicked');
-        this.props.history.push(`/roster/:teamId`)
+        console.log('Cancel clicked', this.props.match.params.teamId );
+        // this.props.history.push(`/roster/${this.props.match.params.teamId} `)
     }
 
     handleAddSkater = (addteam) => {
@@ -84,7 +84,7 @@ class AddSkater extends Component {
                 <br />
                 {/* <br /> <Link to="/roster/:teamId"><button onClick={this.handleCancelClick}>Cancel</button></Link>
                 <Link to="/roster/:teamId"> <button onClick={this.handleAddSkater}>Add Skater</button></Link> */}
-                <br /> <button onClick={this.handleCancelClick}>Cancel</button>
+                <br /> <button onClick={() => this.handleCancelClick()}>Cancel</button>
                 <button onClick={this.handleAddSkater}>Add Skater</button>
 
 
