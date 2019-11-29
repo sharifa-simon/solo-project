@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
+import moment from 'moment';
 
 class Profile extends Component {
 
@@ -33,6 +34,7 @@ class Profile extends Component {
     //     this.props.dispatch({ type: 'GET_ATTEND' })
     // }
 
+   
 
     render() {
         return (
