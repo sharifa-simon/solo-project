@@ -1,7 +1,14 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import LogOutButton from '../LogOutButton/LogOutButton';
+import { Menu, MenuItem } from '@material-ui/core/';
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
+import Nav from '../Nav/Nav';
+
+
+
 
 export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -14,7 +21,10 @@ export default function SimpleMenu() {
     setAnchorEl(null);
   };
 
+  
+  
   return (
+      
     <>
       <MenuIcon aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}/>
        
@@ -24,11 +34,12 @@ export default function SimpleMenu() {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
-      >
-        <MenuItem onClick={handleClose}>Teams</MenuItem>
+      > 
         
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}><Nav /></MenuItem>
+        
       </Menu>
     </>
   );
 }
+

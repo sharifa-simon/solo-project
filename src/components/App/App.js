@@ -5,24 +5,21 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 
-import Nav from '../Nav/Nav';
+
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-
-
 import Teams from '../Teams/Teams';
 import AddTeam from '../AddTeam/AddTeam';
 import Roster from '../Roster/Roster';
 import AddSkater from '../AddSkater/AddSkater';
 import Profile from '../Profile/Profile';
 import EditProfile from '../EditProfile/EditProfile';
+import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core/';
+import SimpleMenu from '../Menu/Menu';
 
 import './App.css';
 
@@ -35,7 +32,18 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
+        <AppBar position="static">
+                <Toolbar>
+                    <IconButton  edge="start" color="inherit" aria-label="menu">
+                    <SimpleMenu />
+                        
+                    </IconButton>
+                    <Typography variant="h6" >
+                        Track Time
+                    </Typography>
+                    
+                </Toolbar>
+            </AppBar>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />

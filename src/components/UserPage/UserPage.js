@@ -15,7 +15,7 @@ const UserPage = (props) => (
     Add or select a team to begin taking attendance!
     <Teams />
     <br />
-    <br /><LogOutButton className="log-in" />
+    
   </div>
 );
 
