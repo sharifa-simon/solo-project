@@ -54,7 +54,7 @@ class Roster extends Component {
 
     handleChangeFor = (attend_type, skater_id) => {
 
-        this.props.dispatch({ type: 'POST_ATTEND', payload: {event: attend_type.target.value, skater_id} });
+        this.props.dispatch({ type: 'POST_ATTEND', payload: { event: attend_type.target.value, skater_id } });
         // this.setState({
         //     practice: {
         //         ...this.state.practice,
@@ -88,7 +88,7 @@ class Roster extends Component {
                                 return (
                                     <li key={skater.id + 1}>
                                         <span> <span onClick={() => this.selectSkater(skater.id)}>{skater.skater_name}</span> - #{skater.number} - {skater.position}
-                                            <select key={skater.id} value={this.state.attend_type} onChange={(event)=>this.handleChangeFor(event, skater.id)} name="attend_type">
+                                            <select key={skater.id} value={this.state.attend_type} onChange={(event) => this.handleChangeFor(event, skater.id)} name="attend_type">
                                                 <option value="" ></option>
                                                 <option value="On Skates">On Skates</option>
                                                 <option value="Off Skates">Off Skates</option>

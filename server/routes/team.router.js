@@ -4,7 +4,7 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 
-router.get('/',  rejectUnauthenticated,(req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     //brings teams from database to client side
     pool.query('SELECT * FROM "teams";').then((result) => {
         res.send(result.rows);
@@ -15,7 +15,7 @@ router.get('/',  rejectUnauthenticated,(req, res) => {
 });
 
 
-router.post('/',  rejectUnauthenticated,(req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     //takes inputted value from addTeam page and adds to the database
     const newTeam = req.body.team;
     console.log('new team', req.body);
@@ -32,7 +32,7 @@ router.post('/',  rejectUnauthenticated,(req, res) => {
         });
 });
 
-router.delete('/:id',  rejectUnauthenticated, (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
     //removes user selected team from database
     const queryText = `
     WITH tmp AS (SELECT "team_id" FROM "skaters" WHERE "team_id"=$1),

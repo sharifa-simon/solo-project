@@ -13,25 +13,25 @@ class EditProfile extends Component {
         }
     
         componentDidMount() {
-            // this.getTeams();
-            this.props.dispatch({ type: 'GET_PROFILE', payload: this.props.match.params.profileId });
+            this.getTeams();
+            
         }
     
-        // getTeams = () => {
-        //     this.props.dispatch({ type: 'GET_TEAM' });
-        // }
+        getTeams = () => {
+            this.props.dispatch({ type: 'GET_TEAM' });
+        }
     
         handleCancelClick = () => {
             //takes user back to Roster page
             console.log('Cancel clicked');
-            this.props.history.push(`/profile/${this.props.match.params.profileId}`)
+            this.props.history.push(`/profile/${this.props.profileReducer.id}`)
         }
     
-        handleAddSkater = (addteam) => {
-            //adds new Skater to Database and returns user to roster page
-            console.log('Adding Skater', addteam.team_id);
-            this.props.dispatch({ type: 'POST_SKATER', payload: this.state.skater });
-            this.props.history.push(`/roster/${this.state.skater.team_id}`)
+        handleSaveProfile = (addteam) => {
+            //edits profile and sends changes to to Database and returns user to that skater's profile page
+            console.log('Editing profile', addteam.team_id);
+            this.props.dispatch({ type: 'PUT_PROFILE', payload: this.state.skater });
+            this.props.history.push(`/profile/${this.props.profileReducer.id}`)
         }
     
         handleInputChangeForNewSkater = (event) => {
@@ -86,7 +86,7 @@ class EditProfile extends Component {
                     {/* <br /> <Link to="/roster/:teamId"><button onClick={this.handleCancelClick}>Cancel</button></Link>
                     <Link to="/roster/:teamId"> <button onClick={this.handleAddSkater}>Add Skater</button></Link> */}
                     <br /> <button onClick={this.handleCancelClick}>Cancel</button>
-                    <button onClick={this.handleAddSkater}>Add Skater</button>
+                    <button onClick={this.handleSaveProfile}>Save Skater</button>
     
     
                     <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
