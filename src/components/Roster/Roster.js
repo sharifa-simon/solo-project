@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
+import TodayDate from '../Date/Date';
 
 class Roster extends Component {
 
@@ -80,8 +81,8 @@ class Roster extends Component {
         
         return (
             <div>
-                <h3>Roster</h3>
-
+                <h2>Roster</h2>
+                <h3><TodayDate /></h3>
                 <form>
                     <label>
                         <ul>

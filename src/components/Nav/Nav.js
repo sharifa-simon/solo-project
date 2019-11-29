@@ -1,25 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
-
-
 
 const Nav = (props) => (
-  
-    <>
-    
-    
-      <Link to="/home">
-        {/* Show this link if they are logged in or not,
+
+  <>
+    <Link to="/home">
+      {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {props.user.id ? 'Home' : 'Login / Register'}
-        
-      </Link>
-    
+      {props.user.id ? 'Home' : 'Login / Register'}
+    </Link>
   </>
-
 );
 
 // Instead of taking everything from state, we just want the user
