@@ -5,18 +5,19 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 
 
 
-const Nav = (props) => (
+const Nav1 = (props) => (
   
     <>
     
     
-      <Link to="/home">
-        {/* Show this link if they are logged in or not,
-        but call this link 'Home' if they are logged in,
-        and call this link 'Login / Register' if they are not */}
-        {props.user.id ? 'Home' : 'Login / Register'}
-        
+    
+      <Link to="/about">
+        About
       </Link>
+      
+      
+      
+      
     
   </>
 
@@ -31,4 +32,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps)(Nav1);
