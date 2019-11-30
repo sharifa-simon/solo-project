@@ -4,6 +4,12 @@ import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
 import TodayDate from '../Date/Date';
 
+//styling imports
+import { Button, IconButton, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core/';
+import AddIcon from '@material-ui/icons/Add';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { TableBody, Table, TableCell, TableHead, TableRow, Paper } from '@material-ui/core/';
+
 class Roster extends Component {
 
 
@@ -18,7 +24,6 @@ class Roster extends Component {
         // this.getRoster();
         // this.forHistory();
         this.props.dispatch({ type: 'GET_ROSTER', payload: this.props.match.params.teamId });
-
     }
 
 
@@ -26,7 +31,6 @@ class Roster extends Component {
         console.log('submit clicked');
         event.preventDefault();
         this.props.dispatch({ type: 'POST_ATTEND', payload: this.state.practice });
-        ;
     }
 
     handleClickAddSkater = () => {
@@ -78,11 +82,53 @@ class Roster extends Component {
 
 
     render() {
-        
+
         return (
             <div>
                 <h2>Roster</h2>
                 <h3><TodayDate /></h3>
+
+                <Paper >
+                    <Table size="small" aria-label="a dense table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Skater</TableCell>
+                                <TableCell align="right">Number</TableCell>
+                                <TableCell align="right">Position</TableCell>
+                                <TableCell align="right">Attendance</TableCell>
+                                <TableCell align="right">Delete</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {this.props.rosterReducer.map(skater => (
+                                <TableRow key={skater.name}>
+                                    <TableCell component="th" scope="row">
+                                        <Button variant="outlined" onClick={() => this.selectSkater(skater.id)}> {skater.skater_name}</Button>
+                                    </TableCell>
+                                    <TableCell align="right">{skater.number}</TableCell>
+                                    <TableCell align="right">{skater.position}</TableCell>
+                                    <TableCell align="right"><FormControl>
+                                        <InputLabel id="demo-simple-select-label"></InputLabel>
+                                        <Select
+                                            value={this.state.attend_type}
+                                            id="demo-simple-select"
+                                            onChange={(event) => this.handleChangeFor(event, skater.id)}
+                                        >
+                                            <MenuItem value="On Skates">On Skates</MenuItem>
+                                            <MenuItem value="Off Skates">Off</MenuItem>
+                                            <MenuItem value="no">No</MenuItem>
+                                        </Select>
+                                    </FormControl></TableCell>
+                                    <TableCell align="right"><IconButton edge="end" aria-label="delete" onClick={() => this.deleteSkater(skater.id)}>
+                                    <DeleteForeverIcon />
+                                    </IconButton></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+
+                </Paper>
+
                 <form>
                     <label>
                         <ul>
@@ -110,6 +156,9 @@ class Roster extends Component {
 
                 <Link to="/home"><button>Home</button></Link>
                 <Link to="/addskater"><button onClick={this.handleClickAddSkater}>Add Skater</button></Link>
+                <Button variant="contained" color="primary">
+                    <AddIcon fontSize="small" />  Skater</Button>
+
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props, null, 2)}</pre>
             </div>
