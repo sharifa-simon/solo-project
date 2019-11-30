@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Menu, MenuItem, makeStyles } from '@material-ui/core/';
 import MenuIcon from '@material-ui/icons/Menu';
 import Nav from '../Nav/Nav';
 import Nav1 from '../Nav/Nav1';
 import Nav2 from '../Nav/Nav2';
 import Nav3 from '../Nav/Nav3';
-
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -30,7 +29,7 @@ export default function SimpleMenu() {
         setAnchorEl(null);
     };
 
-    const classes = useStyles();
+    // const classes = useStyles();
 
 
     return (

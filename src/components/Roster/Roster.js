@@ -111,7 +111,7 @@ class Roster extends Component {
                                         <InputLabel id="demo-simple-select-label"></InputLabel>
                                         <Select
                                             value={this.state.attend_type}
-                                            id="demo-simple-select"
+                                            
                                             onChange={(event) => this.handleChangeFor(event, skater.id)}
                                         >
                                             <MenuItem value="On Skates">On Skates</MenuItem>
