@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
+import TextField from '@material-ui/core/TextField';
+import { Button, ButtonGroup } from '@material-ui/core/';
+import { Grid, Select, InputLabel, MenuItem, FormControl } from '@material-ui/core/';
 
 class EditProfile extends Component {
         state = {
@@ -24,7 +27,7 @@ class EditProfile extends Component {
         handleCancelClick = () => {
             //takes user back to Roster page
             console.log('Cancel clicked');
-            this.props.history.push(`/profile/${this.props.profileReducer.id}`)
+            this.props.history.push(`/profile/${this.props.match.params.edit}`)
         }
     
         handleSaveProfile = (addteam) => {
@@ -86,7 +89,55 @@ class EditProfile extends Component {
                     {/* <br /> <Link to="/roster/:teamId"><button onClick={this.handleCancelClick}>Cancel</button></Link>
                     <Link to="/roster/:teamId"> <button onClick={this.handleAddSkater}>Add Skater</button></Link> */}
                     <br /> <button onClick={this.handleCancelClick}>Cancel</button>
-                    <button onClick={this.handleSaveProfile}>Save Skater</button>
+                    <button >Save Skater</button>
+
+                    <Grid container spacing={1} direction="column" alignItems="center">
+
+                    <TextField id="outlined-basic" label="Name" variant="outlined"
+                        type="text"
+                        name="name"
+                        value={this.state.skater.name} onChange={this.handleInputChangeForNewSkater} />
+                    <br />
+                    <TextField id="outlined-basic" label="Number" variant="outlined"
+                        type="number"
+                        name="number"
+                        value={this.state.skater.number} onChange={this.handleInputChangeForNewSkater} />
+                    <br />
+                    <TextField id="outlined-basic" label="Position" variant="outlined"
+                        type="text"
+                        name="position"
+                        value={this.state.skater.position} onChange={this.handleInputChangeForNewSkater} />
+                    <br />
+                    <FormControl variant="outlined">
+                        <InputLabel id="demo-simple-select-outlined-label">
+                            Team
+                         </InputLabel>
+                        <Select key={this.state.skater.id}
+                            labelId="demo-simple-select-outlined-label"
+                            id="demo-simple-select-outlined"
+                            value={this.state.skater.team_id}
+                            onChange={this.handleChangeFor('team_id')}
+                        >
+                            <MenuItem value="">
+                                <em> </em>
+                            </MenuItem>
+                            {this.props.teamReducer.map((team) => {
+                                return (
+                                    <MenuItem value={team.id}>{team.team_name}</MenuItem>
+                                );
+                            })}
+                        </Select>
+                    </FormControl>
+
+                    <Grid item xs={12} md={6}>
+                        <ButtonGroup variant="contained"
+                            color="primary" aria-label="full width outlined button group" size="small">
+                            <Button onClick={this.handleCancelClick}>Cancel </Button>
+                            <Button onClick={this.handleSaveProfile}>Save</Button>
+
+                        </ButtonGroup>
+                    </Grid>
+                </Grid>
     
     
                     <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
