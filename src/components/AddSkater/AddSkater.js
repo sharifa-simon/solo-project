@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Grid from '@material-ui/core/Grid';
 
 class AddSkater extends Component {
     state = {
@@ -22,7 +26,7 @@ class AddSkater extends Component {
 
     handleCancelClick = () => {
         //takes user back to Roster page
-        console.log('Cancel clicked', this.props.match.params.teamId );
+        console.log('Cancel clicked', this.props.match.params.teamId);
         // this.props.history.push(`/roster/${this.props.match.params.teamId} `)
     }
 
@@ -82,6 +86,33 @@ class AddSkater extends Component {
                 <Link to="/roster/:teamId"> <button onClick={this.handleAddSkater}>Add Skater</button></Link> */}
                 <br /> <button onClick={() => this.handleCancelClick()}>Cancel</button>
                 <button onClick={this.handleAddSkater}>Add Skater</button>
+
+                <Grid container spacing={1} direction="column" alignItems="center">
+
+                    <TextField id="outlined-basic" label="Name" variant="outlined"
+                        type="text"
+                        name="name"
+                        value={this.state.skater.name} onChange={this.handleInputChangeForNewSkater} />
+                    <br />
+                    <TextField id="outlined-basic" label="Number" variant="outlined"
+                        type="number"
+                        name="number"
+                        value={this.state.skater.number} onChange={this.handleInputChangeForNewSkater} />
+                        <br />
+                    <TextField id="outlined-basic" label="Position" variant="outlined"
+                        type="text"
+                        name="position"
+                        value={this.state.skater.position}  onChange={this.handleInputChangeForNewSkater} />
+
+                    <Grid item xs={12} md={6}>
+                        <ButtonGroup variant="contained"
+                            color="primary" aria-label="full width outlined button group" size="small">
+                            <Button onClick={() => this.handleCancelClick()}>Cancel </Button>
+                            <Button onClick={this.handleAddSkater}>Add</Button>
+
+                        </ButtonGroup>
+                    </Grid>
+                </Grid>
 
 
                 <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>

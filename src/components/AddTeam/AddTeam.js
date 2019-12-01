@@ -23,6 +23,10 @@ class AddTeam extends Component {
         this.props.history.push('/teams');
     }
 
+    handleCancel = () => {
+        this.props.history.push('/teams');
+    }
+
     handleInputChangeForNewTeam = (event) => {
         this.setState({
             team: event.target.value,
@@ -34,22 +38,20 @@ class AddTeam extends Component {
             <div>
                 <h3>Add New Team</h3>
                 <Grid container spacing={1} direction="column" alignItems="center">
-                
-  <TextField id="outlined-basic" label="Team Name" variant="outlined" 
-                    type="text"
-                    name="team"
-                    value={this.state.team} onChange={this.handleInputChangeForNewTeam} />
-                
-                
-                
-                <Grid item xs={12} md={6}>
-                    <ButtonGroup variant="contained"
-              color="primary" aria-label="full width outlined button group" size="small">
-                        <Button><Link to="/teams">Cancel </Link></Button>
-                        <Button onClick={this.handleAddTeam}>Add</Button>
-                        
-                    </ButtonGroup>
-                </Grid>
+
+                    <TextField id="outlined-basic" label="Team Name" variant="outlined"
+                        type="text"
+                        name="team"
+                        value={this.state.team} onChange={this.handleInputChangeForNewTeam} />
+
+                    <Grid item xs={12} md={6}>
+                        <ButtonGroup variant="contained"
+                            color="primary" aria-label="full width outlined button group" size="small">
+                            <Button onClick={this.handleCancel}>Cancel</Button>
+                            <Button onClick={this.handleAddTeam}>Add</Button>
+
+                        </ButtonGroup>
+                    </Grid>
                 </Grid>
 
             </div>
