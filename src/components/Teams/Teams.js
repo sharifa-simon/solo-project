@@ -55,7 +55,7 @@ class Teams extends Component {
                 </List>
 
                 <Link to="/addteam"><Button onClick={this.handleClickAddTeam} variant="contained" color="secondary" size="small" >
-                    <AddIcon fontSize="small" /> Team </Button></Link>
+                    <AddIcon fontSize="small" /></Button></Link>
             </div>
         )
     }
