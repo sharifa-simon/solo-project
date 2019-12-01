@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Grid from '@material-ui/core/Grid';
+import { Button, ButtonGroup } from '@material-ui/core/';
+import { Grid, Select, InputLabel, MenuItem, FormControl } from '@material-ui/core/';
+
 
 class AddSkater extends Component {
     state = {
@@ -60,32 +60,10 @@ class AddSkater extends Component {
         return (
             <div>
                 <h3>Add New Skater</h3>
-                Name:<input
-                    type="text"
-                    name="name"
-                    value={this.state.skater.name} onChange={this.handleInputChangeForNewSkater} />
-                <br />Number:<input
-                    type="text"
-                    name="number"
-                    value={this.state.skater.number} onChange={this.handleInputChangeForNewSkater} />
-                <br />Position:<input
-                    type="text"
-                    name="position"
-                    value={this.state.skater.position} onChange={this.handleInputChangeForNewSkater} />
-                <br /> Team: <select key={this.state.skater.id} value={this.state.skater.team_id} onChange={this.handleChangeFor('team_id')} name="team_id">
-                    <option value="">Select</option>
-                    {this.props.teamReducer.map((team) => {
-                        return (
-                            <option value={team.id}>{team.team_name}</option>
-                        );
-                    })}
-                </select>
 
                 <br />
                 {/* <br /> <Link to="/roster/:teamId"><button onClick={this.handleCancelClick}>Cancel</button></Link>
                 <Link to="/roster/:teamId"> <button onClick={this.handleAddSkater}>Add Skater</button></Link> */}
-                <br /> <button onClick={() => this.handleCancelClick()}>Cancel</button>
-                <button onClick={this.handleAddSkater}>Add Skater</button>
 
                 <Grid container spacing={1} direction="column" alignItems="center">
 
@@ -98,11 +76,32 @@ class AddSkater extends Component {
                         type="number"
                         name="number"
                         value={this.state.skater.number} onChange={this.handleInputChangeForNewSkater} />
-                        <br />
+                    <br />
                     <TextField id="outlined-basic" label="Position" variant="outlined"
                         type="text"
                         name="position"
-                        value={this.state.skater.position}  onChange={this.handleInputChangeForNewSkater} />
+                        value={this.state.skater.position} onChange={this.handleInputChangeForNewSkater} />
+                    <br />
+                    <FormControl variant="outlined">
+                        <InputLabel id="demo-simple-select-outlined-label">
+                            Team
+                         </InputLabel>
+                        <Select key={this.state.skater.id}
+                            labelId="demo-simple-select-outlined-label"
+                            id="demo-simple-select-outlined"
+                            value={this.state.skater.team_id}
+                            onChange={this.handleChangeFor('team_id')}
+                        >
+                            <MenuItem value="">
+                                <em> </em>
+                            </MenuItem>
+                            {this.props.teamReducer.map((team) => {
+                                return (
+                                    <MenuItem value={team.id}>{team.team_name}</MenuItem>
+                                );
+                            })}
+                        </Select>
+                    </FormControl>
 
                     <Grid item xs={12} md={6}>
                         <ButtonGroup variant="contained"

@@ -42,7 +42,7 @@ class Teams extends Component {
                 <List component="nav" aria-label="contacts">
                     {this.props.teamReducer.map((team) => {
                         return (
-                            <ListItem button onClick={() => this.viewTeam(team.id)}>
+                            <ListItem key={team.id} button onClick={() => this.viewTeam(team.id)}>
                                 <ListItemText inset primary={team.team_name} />
                                 <ListItemSecondaryAction>
                                     <IconButton onClick={() => this.deleteTeams(team.id)} aria-label="delete">
