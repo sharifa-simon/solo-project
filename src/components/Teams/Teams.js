@@ -3,24 +3,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+import { Button, IconButton } from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add';
-
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import { List, ListItem, ListItemText, ListItemSecondaryAction } from '@material-ui/core/';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 class Teams extends Component {
 
-
     componentDidMount() {
         this.getTeams();
-
     }
 
     getTeams = () => {
@@ -42,7 +33,6 @@ class Teams extends Component {
         console.log('Team clicked:', teamClicked);
         this.props.dispatch({ type: 'GET_ROSTER', payload: teamClicked });
         this.props.history.push(`/roster/${teamClicked}`);
-
     }
 
     render() {
@@ -66,12 +56,7 @@ class Teams extends Component {
 
                 <Link to="/addteam"><Button onClick={this.handleClickAddTeam} variant="contained" color="secondary" size="small" >
                     <AddIcon fontSize="small" /> Team </Button></Link>
-                    
-
             </div>
-
-
-
         )
     }
 }

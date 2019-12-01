@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router";
-
 
 class AddSkater extends Component {
     state = {
@@ -75,11 +73,9 @@ class AddSkater extends Component {
                     {this.props.teamReducer.map((team) => {
                         return (
                             <option value={team.id}>{team.team_name}</option>
-
                         );
                     })}
                 </select>
-
 
                 <br />
                 {/* <br /> <Link to="/roster/:teamId"><button onClick={this.handleCancelClick}>Cancel</button></Link>
@@ -100,4 +96,4 @@ class AddSkater extends Component {
 const mapStateToProps = (reduxState) => {
     return reduxState;
 };
-export default withRouter(connect(mapStateToProps))(AddSkater);
+export default connect(mapStateToProps)(AddSkater);

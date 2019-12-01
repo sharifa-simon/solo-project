@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import { Link } from 'react-router-dom';
 import TodayDate from '../Date/Date';
 
 //styling imports
@@ -11,7 +10,6 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { TableBody, Table, TableCell, TableHead, TableRow, Paper } from '@material-ui/core/';
 
 class Roster extends Component {
-
 
     state = {
         practice: {
@@ -26,7 +24,6 @@ class Roster extends Component {
         this.props.dispatch({ type: 'GET_ROSTER', payload: this.props.match.params.teamId });
     }
 
-
     submitFormHandler = event => {
         console.log('submit clicked');
         event.preventDefault();
@@ -36,11 +33,11 @@ class Roster extends Component {
     handleClickAddSkater = () => {
         //takes user to another page to add a Team
         console.log('Moving to Add Skater:');
+        this.props.history.push(`/addskater`);
     }
 
     deleteSkater = (skaterid) => {
         console.log('DELETE:', skaterid);
-
         //deletes selected button's skater to remove from redux state and database
         this.props.dispatch({ type: 'DELETE_SKATER', payload: skaterid });
     }
@@ -67,7 +64,6 @@ class Roster extends Component {
         //         skater_id: skater_id,
         //     }
         // });
-
     }
 
     handleForID = propertyName => event => {
@@ -79,7 +75,6 @@ class Roster extends Component {
             }
         });
     }
-
 
     render() {
 
@@ -103,21 +98,20 @@ class Roster extends Component {
                             {this.props.rosterReducer.map(skater => (
                                 <TableRow key={skater.id}>
                                     <TableCell component="th" scope="row">
-                                        <Button size="small" variant="outlined" onClick={() => this.selectSkater(skater.id)}> {skater.skater_name}</Button>
+                                        <Button size="small" onClick={() => this.selectSkater(skater.id)}> {skater.skater_name}</Button>
                                     </TableCell>
                                     <TableCell align="right">{skater.number}</TableCell>
                                     <TableCell align="right">{skater.position}</TableCell>
                                     <TableCell align="right">
-                                       <FormControl> <InputLabel id="demo-simple-select-label"></InputLabel>
+                                        <FormControl> <InputLabel id="demo-simple-select-label"></InputLabel>
 
-                                        <Select key={skater.id}
-                                           
-                                            id="demo-simple-select"
-                                            onChange={(event) => this.handleChangeFor(event, skater.id)}>
-                                            <MenuItem value="On Skates">On Skates</MenuItem>
-                                            <MenuItem value="Off Skates">Off</MenuItem>
-                                            <MenuItem value="No">No</MenuItem>
-                                        </Select>
+                                            <Select key={skater.id}
+                                                id="demo-simple-select"
+                                                onChange={(event) => this.handleChangeFor(event, skater.id)}>
+                                                <MenuItem value="On Skates">On Skates</MenuItem>
+                                                <MenuItem value="Off Skates">Off</MenuItem>
+                                                <MenuItem value="No">No</MenuItem>
+                                            </Select>
 
                                         </FormControl> </TableCell>
                                     <TableCell align="right"><IconButton aria-label="delete" onClick={() => this.deleteSkater(skater.id)}>
@@ -130,10 +124,9 @@ class Roster extends Component {
                 </Paper>
 
                 <br />
-                    <Link to="/addskater"><Button size="small" variant="contained" color="primary" onClick={this.handleClickAddSkater}>
-                        <AddIcon fontSize="small" />Skater</Button></Link>
+                <Button size="small" variant="contained" color="primary" onClick={this.handleClickAddSkater}>
+                    <AddIcon fontSize="small" />Skater</Button>
             </div>
-
         )
     }
 }

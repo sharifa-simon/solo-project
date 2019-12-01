@@ -6,17 +6,7 @@ import Nav1 from '../Nav/Nav1';
 import Nav2 from '../Nav/Nav2';
 import Nav3 from '../Nav/Nav3';
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
-}));
+
 
 export default function SimpleMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -29,11 +19,7 @@ export default function SimpleMenu() {
         setAnchorEl(null);
     };
 
-    // const classes = useStyles();
-
-
     return (
-
         <>
             <MenuIcon aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} />
 
@@ -44,7 +30,6 @@ export default function SimpleMenu() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-
                 <MenuItem onClick={handleClose}><Nav /></MenuItem>
                 <MenuItem onClick={handleClose}><Nav1 /></MenuItem>
                 <MenuItem onClick={handleClose}><Nav2 /></MenuItem>

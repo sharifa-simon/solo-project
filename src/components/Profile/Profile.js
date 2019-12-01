@@ -2,21 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import moment from 'moment';
-import SimpleCard from '../Cards/Cards';
+
 //material-ui imports
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-
-
-
-import IconButton from '@material-ui/core/IconButton';
-
-import { Grid, Paper, ButtonBase } from '@material-ui/core/';
-
+import { Card, CardActions, CardContent } from '@material-ui/core/';
+import { Button, IconButton } from '@material-ui/core/';
+import { Paper } from '@material-ui/core/';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core/';
@@ -88,7 +79,7 @@ class Profile extends Component {
                             <TableRow>
                                 <TableCell>Date Attended</TableCell>
                                 <TableCell align="right">Status</TableCell>
-                                <TableCell align="right"></TableCell>
+                                
                                 <TableCell align="right">Edit</TableCell>
                                 <TableCell align="right">Delete</TableCell>
                             </TableRow>
@@ -100,7 +91,6 @@ class Profile extends Component {
                                         {date.date}
                                     </TableCell>
                                     <TableCell align="right">{date.attend_type}</TableCell>
-                                    <TableCell align="right"></TableCell>
                                     <TableCell align="right"><IconButton onClick={() => this.editAttendance(date.id)} edge="end" aria-label="delete">
                                         <EditIcon fontSize="small" />
                                     </IconButton></TableCell>
