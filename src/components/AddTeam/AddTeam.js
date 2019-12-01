@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
 
 class AddTeam extends Component {
     state = {
@@ -29,11 +30,12 @@ class AddTeam extends Component {
         return (
             <div>
                 <h3>Add New Team</h3>
-                Name:<input
-                    type="text"
-                    name="team"
-                    value={this.state.team} onChange={this.handleInputChangeForNewTeam} />
-                <br /> <Link to="/teams"><button onClick={this.handleCancelClick}>Cancel</button></Link>
+                Name:
+                <TextField id="filled-basic" label="Filled" variant="filled" 
+                type="text"
+                name="team"
+                value={this.state.team} onChange={this.handleInputChangeForNewTeam}/>
+                <br /> <Link to="/teams"><button>Cancel</button></Link>
                 <button onClick={this.handleAddTeam}>Add Team</button>
 
 

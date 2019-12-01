@@ -45,8 +45,8 @@ class LoginPage extends Component {
           <h2>Login</h2>
           <div>
             <label htmlFor="username">
-              Username:
-              <TextField id="outlined-basic"  variant="outlined" 
+              
+              <TextField id="u-name"  variant="outlined" label="Username"
               type="text"
               name="username"
               value={this.state.username}
@@ -62,8 +62,8 @@ class LoginPage extends Component {
           </div>
           <div>
             <label htmlFor="password">
-              Password:
-              <TextField id="outlined-basic"  variant="outlined"
+            <br />
+              <TextField id="p-word"  variant="outlined" label="Password"
               type="password"
               name="password"
               value={this.state.password}
