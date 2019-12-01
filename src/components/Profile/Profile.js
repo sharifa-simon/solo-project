@@ -3,6 +3,18 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import moment from 'moment';
 
+//material-ui imports
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
+import IconButton from '@material-ui/core/IconButton';
+
+import { Grid, Paper, ButtonBase } from '@material-ui/core/';
+
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { Table, TableBody, TableCell, TableHead, TableRow }  from '@material-ui/core/';
+
 class Profile extends Component {
 
     handleBackButton = (teamroster) => {
@@ -15,9 +27,6 @@ class Profile extends Component {
         this.props.history.push(`/profile/edit/${skaterprofile}`)
     }
 
-    componentDidUpdate(){
-        this.deletePractice();
-    }
     componentDidMount() {
         // this.getProfile();
         // this.getAttend();
@@ -28,7 +37,7 @@ class Profile extends Component {
     editAttendance = (practice) => {
         console.log('This date clicked', practice)
     }
-   
+
     deletePractice = (dateid) => {
         console.log('DELETE:', dateid);
 
@@ -36,7 +45,7 @@ class Profile extends Component {
         this.props.dispatch({ type: 'DELETE_PRACTICE', payload: dateid });
     }
 
-   
+
 
     render() {
         return (
@@ -48,18 +57,38 @@ class Profile extends Component {
                 <br />Position: {this.props.profileReducer.position}
                 <button onClick={() => this.editSkater(this.props.profileReducer.id)}>Edit Skater</button>
 
-                <p>Practices Attended</p>
+                <p>Practice History</p>
 
-                <ul>{this.props.attendReducer.map((date) => {
-                    return (
-                        <li key={date.id + 1}>
-                            <span> {date.date} {date.attend_type}</span>
-                            <button onClick={() => this.editAttendance(date.id)}>Edit</button>
-                            <button onClick={() => this.deletePractice(date.id)}>Delete</button>
-                        </li>
-                    );
-                })}
-                </ul>
+                <Paper>
+                    <Table size="small" aria-label="a dense table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Date Attended</TableCell>
+                                <TableCell align="right">Status</TableCell>
+                                <TableCell align="right"></TableCell>
+                                <TableCell align="right">Edit</TableCell>
+                                <TableCell align="right">Delete</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {this.props.attendReducer.map(date => (
+                                <TableRow key={date.id}>
+                                    <TableCell component="th" scope="row">
+                                        {date.date}
+                                    </TableCell>
+                                    <TableCell align="right">{date.attend_type}</TableCell>
+                                    <TableCell align="right"></TableCell>
+                                    <TableCell align="right"><IconButton onClick={() => this.editAttendance(date.id)} edge="end" aria-label="delete">
+                                        <EditIcon fontSize="small" />
+                                    </IconButton></TableCell>
+                                    <TableCell align="right"><IconButton onClick={() => this.deletePractice(date.id)} edge="end" aria-label="delete">
+                                        <DeleteForeverIcon />
+                                    </IconButton></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Paper>
 
                 <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
