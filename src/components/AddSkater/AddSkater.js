@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { withRouter } from "react-router";
 
 
 class AddSkater extends Component {
@@ -100,4 +100,4 @@ class AddSkater extends Component {
 const mapStateToProps = (reduxState) => {
     return reduxState;
 };
-export default connect(mapStateToProps)(AddSkater);
+export default withRouter(connect(mapStateToProps))(AddSkater);

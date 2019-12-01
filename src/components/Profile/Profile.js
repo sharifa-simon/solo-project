@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import moment from 'moment';
-
+import SimpleCard from '../Cards/Cards';
 //material-ui imports
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+
+
 
 import IconButton from '@material-ui/core/IconButton';
 
@@ -13,7 +19,7 @@ import { Grid, Paper, ButtonBase } from '@material-ui/core/';
 
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { Table, TableBody, TableCell, TableHead, TableRow }  from '@material-ui/core/';
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core/';
 
 class Profile extends Component {
 
@@ -52,10 +58,27 @@ class Profile extends Component {
             <div>
                 <button onClick={() => this.handleBackButton(this.props.profileReducer.team_id)}>Back to Roster</button>
                 <h3>Profile</h3>
-                {this.props.profileReducer.skater_name}
-                <br />#{this.props.profileReducer.number}
-                <br />Position: {this.props.profileReducer.position}
-                <button onClick={() => this.editSkater(this.props.profileReducer.id)}>Edit Skater</button>
+
+                <Card>
+                    <CardContent>
+
+                        <Typography variant="h5" component="h2" >
+                            {this.props.profileReducer.skater_name}
+                        </Typography>
+                        <Typography color="textSecondary" >
+                            #{this.props.profileReducer.number}
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                            Position: {this.props.profileReducer.position}
+
+                            <br />
+
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Button onClick={() => this.editSkater(this.props.profileReducer.id)} size="small" >Edit Profile</Button>
+                    </CardActions>
+                </Card>
 
                 <p>Practice History</p>
 

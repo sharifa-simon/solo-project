@@ -3,6 +3,18 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
+
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+
 class Teams extends Component {
 
 
@@ -37,20 +49,28 @@ class Teams extends Component {
         return (
             <div>
                 <h3>Teams</h3>
-                <ul>
+                <List component="nav" aria-label="contacts">
                     {this.props.teamReducer.map((team) => {
                         return (
-                            <li key={team.id}>
-                                <span>{team.team_name}</span>
-                                <button onClick={() => this.viewTeam(team.id)}>Select</button>
-                                <button onClick={() => this.deleteTeams(team.id)}>Delete</button>
-                            </li>
+                            <ListItem button onClick={() => this.viewTeam(team.id)}>
+                                <ListItemText inset primary={team.team_name} />
+                                <ListItemSecondaryAction>
+                                    <IconButton onClick={() => this.deleteTeams(team.id)} aria-label="delete">
+                                        <DeleteForeverIcon />
+                                    </IconButton>
+                                </ListItemSecondaryAction>
+                            </ListItem>
                         );
                     })}
-                </ul>
-                <br /> <Link to="/addteam"><button onClick={this.handleClickAddTeam}>Add Team</button></Link>
+                </List>
+
+                <Link to="/addteam"><Button onClick={this.handleClickAddTeam} variant="contained" color="secondary" size="small" >
+                    <AddIcon fontSize="small" /> Team </Button></Link>
+                    
 
             </div>
+
+
 
         )
     }
