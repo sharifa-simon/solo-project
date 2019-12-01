@@ -15,6 +15,9 @@ class Profile extends Component {
         this.props.history.push(`/profile/edit/${skaterprofile}`)
     }
 
+    componentDidUpdate(){
+        this.deletePractice();
+    }
     componentDidMount() {
         // this.getProfile();
         // this.getAttend();
@@ -25,14 +28,13 @@ class Profile extends Component {
     editAttendance = (practice) => {
         console.log('This date clicked', practice)
     }
-    // getProfile = () =>{
-    //     let skaterId = this.props.match.params.id
-    //     this.props.dispatch({type: 'SET_PROFILE', payload: skaterId})
-    // }
+   
+    deletePractice = (dateid) => {
+        console.log('DELETE:', dateid);
 
-    // getAttend = () => {
-    //     this.props.dispatch({ type: 'GET_ATTEND' })
-    // }
+        //deletes selected button's skater to remove from redux state and database
+        this.props.dispatch({ type: 'DELETE_PRACTICE', payload: dateid });
+    }
 
    
 
@@ -53,6 +55,7 @@ class Profile extends Component {
                         <li key={date.id + 1}>
                             <span> {date.date} {date.attend_type}</span>
                             <button onClick={() => this.editAttendance(date.id)}>Edit</button>
+                            <button onClick={() => this.deletePractice(date.id)}>Delete</button>
                         </li>
                     );
                 })}

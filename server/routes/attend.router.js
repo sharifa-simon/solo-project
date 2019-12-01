@@ -18,7 +18,7 @@ router.get('/:date', rejectUnauthenticated, (req, res) => {
 
 router.post('/',  rejectUnauthenticated,(req, res) => {
     const newPractice = req.body;
-    console.log('new skater here',req.body);
+    console.log('new attendance',req.body);
     const queryText = `INSERT INTO attendance ("skater_id", "attend_type")
                       VALUES ($1, $2)`;
     const queryValues = [
@@ -33,4 +33,14 @@ router.post('/',  rejectUnauthenticated,(req, res) => {
         });
 });
 
+router.delete('/:id',  rejectUnauthenticated, (req, res) => {
+    //removes user selected attendance date from database
+    const queryText = 'DELETE FROM attendance WHERE id=$1';
+    pool.query(queryText, [req.params.id])
+        .then(() => { res.sendStatus(200); })
+        .catch((err) => {
+            console.log('Error completing DELETE skater query', err);
+            res.sendStatus(500);
+        });
+});
 module.exports = router;

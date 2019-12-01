@@ -52,7 +52,7 @@ class Roster extends Component {
     selectSkater = (skaterClicked) => {
         //clicked skater button moves user to profile with id
         console.log('Skater clicked:', skaterClicked);
-        this.props.dispatch({ type: 'GET_PROFILE, GET_ATTEND', payload: skaterClicked });
+        this.props.dispatch({ type: 'GET_PROFILE', payload: skaterClicked });
         this.props.history.push(`/profile/${skaterClicked}`);
     }
 
@@ -63,8 +63,8 @@ class Roster extends Component {
         // this.setState({
         //     practice: {
         //         ...this.state.practice,
-        //         attend_type: event.target.value,
-        //         skater_id: skaterId,
+        //         attend_type: attend_type.target.value,
+        //         skater_id: skater_id,
         //     }
         // });
 
@@ -101,66 +101,37 @@ class Roster extends Component {
                         </TableHead>
                         <TableBody>
                             {this.props.rosterReducer.map(skater => (
-                                <TableRow key={skater.name}>
+                                <TableRow key={skater.id}>
                                     <TableCell component="th" scope="row">
-                                        <Button variant="outlined" onClick={() => this.selectSkater(skater.id)}> {skater.skater_name}</Button>
+                                        <Button size="small" variant="outlined" onClick={() => this.selectSkater(skater.id)}> {skater.skater_name}</Button>
                                     </TableCell>
                                     <TableCell align="right">{skater.number}</TableCell>
                                     <TableCell align="right">{skater.position}</TableCell>
-                                    <TableCell align="right"><FormControl>
-                                        <InputLabel id="demo-simple-select-label"></InputLabel>
-                                        <Select
-                                            value={this.state.attend_type}
-                                            
-                                            onChange={(event) => this.handleChangeFor(event, skater.id)}
-                                        >
+                                    <TableCell align="right">
+                                       <FormControl> <InputLabel id="demo-simple-select-label"></InputLabel>
+
+                                        <Select key={skater.id}
+                                           
+                                            id="demo-simple-select"
+                                            onChange={(event) => this.handleChangeFor(event, skater.id)}>
                                             <MenuItem value="On Skates">On Skates</MenuItem>
                                             <MenuItem value="Off Skates">Off</MenuItem>
-                                            <MenuItem value="no">No</MenuItem>
+                                            <MenuItem value="No">No</MenuItem>
                                         </Select>
-                                    </FormControl></TableCell>
-                                    <TableCell align="right"><IconButton edge="end" aria-label="delete" onClick={() => this.deleteSkater(skater.id)}>
-                                    <DeleteForeverIcon />
+
+                                        </FormControl> </TableCell>
+                                    <TableCell align="right"><IconButton aria-label="delete" onClick={() => this.deleteSkater(skater.id)}>
+                                        <DeleteForeverIcon />
                                     </IconButton></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
-
                 </Paper>
 
-                <form>
-                    <label>
-                        <ul>
-                            {this.props.rosterReducer.map((skater) => {
-                                return (
-                                    <li key={skater.id + 1}>
-                                        <span> <span onClick={() => this.selectSkater(skater.id)}>{skater.skater_name}</span> - #{skater.number} - {skater.position}
-                                            <select key={skater.id} value={this.state.attend_type} onChange={(event) => this.handleChangeFor(event, skater.id)} name="attend_type">
-                                                <option value="" ></option>
-                                                <option value="On Skates">On Skates</option>
-                                                <option value="Off Skates">Off Skates</option>
-                                                <option value="No" >No</option></select>
-                                        </span>
-                                        <br /> <button onClick={() => this.deleteSkater(skater.id)}>Delete</button>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-
-                    </label>
-                    <input onClick={this.submitFormHandler} type="submit" value="Submit" />
-                </form>
-
-
-
-                <Link to="/home"><button>Home</button></Link>
-                <Link to="/addskater"><button onClick={this.handleClickAddSkater}>Add Skater</button></Link>
-                <Button variant="contained" color="primary">
-                    <AddIcon fontSize="small" />  Skater</Button>
-
-                <pre>{JSON.stringify(this.state, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props, null, 2)}</pre>
+                <br />
+                    <Link to="/addskater"><Button size="small" variant="contained" color="primary" onClick={this.handleClickAddSkater}>
+                        <AddIcon fontSize="small" />Skater</Button></Link>
             </div>
 
         )
