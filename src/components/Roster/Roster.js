@@ -8,6 +8,7 @@ import { Button, IconButton, InputLabel, MenuItem, FormControl, Select } from '@
 import AddIcon from '@material-ui/icons/Add';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { TableBody, Table, TableCell, TableHead, TableRow, Paper } from '@material-ui/core/';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 class Roster extends Component {
 
@@ -124,8 +125,8 @@ class Roster extends Component {
                 </Paper>
 
                 <br />
-                <Button size="small" variant="contained" color="primary" onClick={this.handleClickAddSkater}>
-                    <AddIcon fontSize="small" />Skater</Button>
+                <Button size="small" variant="contained" color="primary" >
+                    <PersonAddIcon fontSize="medium" onClick={this.handleClickAddSkater} /></Button>
             </div>
         )
     }

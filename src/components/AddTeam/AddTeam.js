@@ -30,8 +30,8 @@ class AddTeam extends Component {
         return (
             <div>
                 <h3>Add New Team</h3>
-                Name:
-                <TextField id="filled-basic" label="Filled" variant="filled" 
+                
+                <TextField id="standard-basic" label="Team Name"
                 type="text"
                 name="team"
                 value={this.state.team} onChange={this.handleInputChangeForNewTeam}/>
