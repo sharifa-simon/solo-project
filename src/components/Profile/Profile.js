@@ -49,7 +49,7 @@ class Profile extends Component {
         return (
             <div>
                 <br />
-                <Button variant="contained" color="secondary" size="small" 
+                <Button variant="contained" color="primary" size="small" 
                 onClick={() => this.handleBackButton(this.props.profileReducer.team_id)}>
                 <KeyboardBackspaceIcon fontSize="small"/> 
                 </Button>

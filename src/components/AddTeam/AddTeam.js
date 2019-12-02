@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Grid from '@material-ui/core/Grid';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 class AddTeam extends Component {
     state = {
@@ -35,7 +35,11 @@ class AddTeam extends Component {
 
     render() {
         return (
-            <div>
+            <div><br />
+                <Button variant="contained" color="primary" size="small"
+                    onClick={this.handleCancel}>
+                    <KeyboardBackspaceIcon fontSize="small" />
+                </Button>
                 <h3>Add New Team</h3>
                 <Grid container spacing={1} direction="column" alignItems="center">
 
@@ -45,10 +49,11 @@ class AddTeam extends Component {
                         value={this.state.team} onChange={this.handleInputChangeForNewTeam} />
 
                     <Grid item xs={12} md={6}>
+                       
                         <ButtonGroup variant="contained"
                             color="primary" aria-label="full width outlined button group" size="small">
-                            <Button onClick={this.handleCancel}>Cancel</Button>
-                            <Button onClick={this.handleAddTeam}>Add</Button>
+
+                            <Button onClick={this.handleAddTeam}>Add Team</Button>
 
                         </ButtonGroup>
                     </Grid>

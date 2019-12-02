@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, MenuItem, makeStyles } from '@material-ui/core/';
+import { Menu, MenuItem } from '@material-ui/core/';
 import MenuIcon from '@material-ui/icons/Menu';
 import Nav from '../Nav/Nav';
 import Nav1 from '../Nav/Nav1';

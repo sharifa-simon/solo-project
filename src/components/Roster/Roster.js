@@ -5,7 +5,6 @@ import TodayDate from '../Date/Date';
 
 //styling imports
 import { Button, IconButton, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core/';
-import AddIcon from '@material-ui/icons/Add';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { TableBody, Table, TableCell, TableHead, TableRow, Paper } from '@material-ui/core/';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
@@ -86,6 +85,7 @@ class Roster extends Component {
         return (
             <div>
                 <h2>Roster</h2>
+                {this.props.teamReducer.team_name}
                 <h3><TodayDate /></h3>
 
                 <Paper >
@@ -108,11 +108,15 @@ class Roster extends Component {
                                     <TableCell align="right">{skater.number}</TableCell>
                                     <TableCell align="right">{skater.position}</TableCell>
                                     <TableCell align="right">
-                                        <FormControl> <InputLabel id="demo-simple-select-label"></InputLabel>
+                                        <FormControl variant="outlined">
+                                            <InputLabel id="demo-simple-select-label"></InputLabel>
 
                                             <Select key={skater.id}
-                                                id="demo-simple-select"
+                                                labelId="demo-simple-select-outlined-label"
+                                                id="demo-simple-select-outlined"
+                                                
                                                 onChange={(event) => this.handleChangeFor(event, skater.id)}>
+
                                                 <MenuItem value="On Skates">On Skates</MenuItem>
                                                 <MenuItem value="Off Skates">Off</MenuItem>
                                                 <MenuItem value="No">No</MenuItem>
@@ -130,7 +134,7 @@ class Roster extends Component {
 
                 <br />
                 <Button onClick={this.handleClickAddSkater} size="small" variant="contained" color="primary" >
-                    <PersonAddIcon fontSize="medium" onClick={this.handleClickAddSkater} /></Button>
+                    <PersonAddIcon  onClick={this.handleClickAddSkater} /></Button>
             </div>
         )
     }

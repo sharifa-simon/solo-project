@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import { Button, ButtonGroup } from '@material-ui/core/';
 import { Grid, Select, InputLabel, MenuItem, FormControl } from '@material-ui/core/';
-
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 class AddSkater extends Component {
     state = {
@@ -58,7 +58,9 @@ class AddSkater extends Component {
 
     render() {
         return (
-            <div>
+            <div><br />
+            <Button variant="contained" color="primary" size="small" onClick={() => this.handleCancelClick()}>
+            <KeyboardBackspaceIcon fontSize="small" /></Button>
                 <h3>Add New Skater</h3>
 
                 <br />
@@ -106,8 +108,8 @@ class AddSkater extends Component {
                     <Grid item xs={12} md={6}>
                         <ButtonGroup variant="contained"
                             color="primary" aria-label="full width outlined button group" size="small">
-                            <Button onClick={() => this.handleCancelClick()}>Cancel </Button>
-                            <Button onClick={this.handleAddSkater}>Add</Button>
+                            
+                            <Button onClick={this.handleAddSkater}>Add To Roster</Button>
 
                         </ButtonGroup>
                     </Grid>
@@ -117,7 +119,8 @@ class AddSkater extends Component {
                 <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
-
+                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre>
+              
             </div>
         )
     }
