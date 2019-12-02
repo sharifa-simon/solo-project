@@ -80,7 +80,7 @@ class LoginPage extends Component {
             </label>
           </div>
           <div><br />
-          <Button variant="contained" color="primary" size="size"
+          <Button variant="contained" color="primary"  size="small" style={{width: `67px`}}
           className="log-in"
           type="submit"
           name="submit"

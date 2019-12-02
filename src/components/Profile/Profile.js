@@ -40,23 +40,21 @@ class Profile extends Component {
         console.log('DELETE:', dateid);
 
         //deletes selected button's skater to remove from redux state and database
-        this.props.dispatch({ type: 'DELETE_PRACTICE', payload: {id: dateid} });
+        this.props.dispatch({ type: 'DELETE_PRACTICE', payload: { id: dateid } });
     }
-
-
 
     render() {
         return (
             <div>
                 <br />
-                <Button variant="contained" color="primary" size="small" 
-                onClick={() => this.handleBackButton(this.props.profileReducer.team_id)}>
-                <KeyboardBackspaceIcon fontSize="small"/> 
+                <Button variant="contained" color="primary" size="small"
+                    onClick={() => this.handleBackButton(this.props.profileReducer.team_id)}>
+                    <KeyboardBackspaceIcon fontSize="small" />
                 </Button>
-                
+
                 <h3>Profile</h3>
 
-               <Box display="flex" justifyContent="center"> <Card style={{width: `500px`}}>
+                <Box display="flex" justifyContent="center"> <Card style={{ width: `500px` }}>
                     <CardContent>
 
                         <Typography variant="h5" component="h2" >
@@ -76,42 +74,43 @@ class Profile extends Component {
                         <Button onClick={() => this.editSkater(this.props.profileReducer.id)} size="small" >Edit Profile</Button>
                     </CardActions>
                 </Card>
-</Box>
-                <p>Practice History</p>
+                </Box>
+                <h3>Practice History</h3>
 
                 <Paper>
                     <Table size="small" aria-label="a dense table">
                         <TableHead>
                             <TableRow>
-                                <TableCell style={{backgroundColor:`#ff6f60`}}>Date Attended</TableCell>
-                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Status</TableCell>
-                                
-                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Edit</TableCell>
-                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Delete</TableCell>
+                                <TableCell style={{ backgroundColor: `#ff6f60` }}>Date Attended</TableCell>
+                                <TableCell style={{ backgroundColor: `#ff6f60` }} align="right">Status</TableCell>
+
+                                <TableCell style={{ backgroundColor: `#ff6f60` }} align="right">Edit</TableCell>
+                                <TableCell style={{ backgroundColor: `#ff6f60` }} align="right">Delete</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                        {this.props.attendReducer.map((date) => {
-                            return (
-                                <TableRow key={date.id}>
-                                    <TableCell component="th" scope="row">
-                                        {date.date}
-                                    </TableCell>
-                                    <TableCell align="right">{date.attend_type}</TableCell>
-                                    <TableCell align="right"><IconButton onClick={() => this.editAttendance(date.id)} edge="end" aria-label="delete">
-                                        <EditIcon fontSize="small" />
-                                    </IconButton></TableCell>
-                                    <TableCell align="right"><IconButton color="secondary" onClick={() => this.deletePractice(date.id)} edge="end" aria-label="delete">
-                                        <DeleteForeverIcon />
-                                    </IconButton></TableCell>
-                                </TableRow>
-                            )
+                            {this.props.attendReducer.map((date) => {
+                               
+                                return (
+                                    <TableRow key={date.id}>
+                                        <TableCell component="th" scope="row">
+                                            {date.date}
+                                        </TableCell>
+                                        <TableCell align="right">{date.attend_type}</TableCell>
+                                        <TableCell align="right"><IconButton onClick={() => this.editAttendance(date.id)} edge="end" aria-label="delete">
+                                            <EditIcon fontSize="small" />
+                                        </IconButton></TableCell>
+                                        <TableCell align="right"><IconButton color="secondary" onClick={() => this.deletePractice(date.id)} edge="end" aria-label="delete">
+                                            <DeleteForeverIcon />
+                                        </IconButton></TableCell>
+                                    </TableRow>
+                                )
                             })}
-                        
+
                         </TableBody>
                     </Table>
                 </Paper>
-{/* 
+                {/* 
                 <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre> */}
                 {/* <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
