@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { Paper } from '@material-ui/core/';
 
 class LoginPage extends Component {
   state = {
@@ -41,7 +42,7 @@ class LoginPage extends Component {
           >
             {this.props.errors.loginMessage}
           </h2>
-        )}
+        )}<Paper>
         <form onSubmit={this.login}>
           <h2>Login</h2>
           <div>
@@ -79,7 +80,7 @@ class LoginPage extends Component {
             </label>
           </div>
           <div><br />
-          <Button variant="contained" color="primary" size="medium"
+          <Button variant="contained" color="primary" size="size"
           className="log-in"
           type="submit"
           name="submit"
@@ -87,6 +88,7 @@ class LoginPage extends Component {
             
           </div>
         </form>
+        </Paper>
         <center>
           <button
             type="button"

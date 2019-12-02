@@ -94,18 +94,18 @@ class Roster extends Component {
                     <Table size="small" aria-label="a dense table">
                         <TableHead>
                             <TableRow>
-                                <TableCell>Skater</TableCell>
-                                <TableCell style={{width:`25px`}} align="right">Number</TableCell>
-                                <TableCell align="right">Position</TableCell>
-                                <TableCell align="right">Attendance</TableCell>
-                                <TableCell align="right">Delete</TableCell>
+                                <TableCell style={{backgroundColor:`#ff6f60`}}>Skater</TableCell>
+                                <TableCell style={{width:`25px`}} style={{backgroundColor:`#ff6f60`}} align="right">Number</TableCell>
+                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Position</TableCell>
+                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Attendance</TableCell>
+                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Delete</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {this.props.rosterReducer.map(skater => (
                                 <TableRow key={skater.id}>
                                     <TableCell component="th" scope="row">
-                                        <Button size="small" onClick={() => this.selectSkater(skater.id)}> {skater.skater_name}</Button>
+                                        <Button  size="small" onClick={() => this.selectSkater(skater.id)}> {skater.skater_name}</Button>
                                     </TableCell>
                                     <TableCell align="right">{skater.number}</TableCell>
                                     <TableCell align="right">{skater.position}</TableCell>
@@ -125,7 +125,7 @@ class Roster extends Component {
                                             </Select>
 
                                         </FormControl> </TableCell>
-                                    <TableCell align="right"><IconButton aria-label="delete" onClick={() => this.deleteSkater(skater.id)}>
+                                    <TableCell align="right"><IconButton color="secondary" aria-label="delete" onClick={() => this.deleteSkater(skater.id)}>
                                         <DeleteForeverIcon />
                                     </IconButton></TableCell>
                                 </TableRow>

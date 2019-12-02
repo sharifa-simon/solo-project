@@ -1,4 +1,5 @@
 import React from 'react';
+import { Paper } from '@material-ui/core/';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -6,13 +7,16 @@ import React from 'react';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 const AboutPage = () => (
-  <div>
+  <div> 
+  <h3>About</h3>
+  <Paper>
     <div>
       <p>
         Track Time was created, for Minnesota Roller Derby, 
         <br />to keep attendance for active skaters attending practices.
       </p>
     </div>
+    </Paper>
   </div>
 );
 

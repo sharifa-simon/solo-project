@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { Button, ButtonGroup } from '@material-ui/core/';
 import { Grid, Select, InputLabel, MenuItem, FormControl } from '@material-ui/core/';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
-
+import { Paper } from '@material-ui/core/';
 class AddSkater extends Component {
     state = {
         skater: {
@@ -63,10 +63,12 @@ class AddSkater extends Component {
             <KeyboardBackspaceIcon fontSize="small" /></Button>
                 <h3>Add New Skater</h3>
 
-                <br />
+                
                 {/* <br /> <Link to="/roster/:teamId"><button onClick={this.handleCancelClick}>Cancel</button></Link>
                 <Link to="/roster/:teamId"> <button onClick={this.handleAddSkater}>Add Skater</button></Link> */}
 
+<Paper>
+    <br />
                 <Grid container spacing={1} direction="column" alignItems="center">
 
                     <TextField id="outlined-basic" label="Name" variant="outlined"
@@ -121,7 +123,7 @@ class AddSkater extends Component {
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
-              
+              </Paper>
             </div>
         )
     }

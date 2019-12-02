@@ -41,8 +41,9 @@ class Teams extends Component {
     render() {
 
         return (
-            <div><Paper>
+            <div>
                 <h3>Teams</h3>
+                <Paper>
                 <List component="nav" aria-label="contacts">
                     {this.props.teamReducer.map((team) => {
                         return (
@@ -50,16 +51,16 @@ class Teams extends Component {
                                 <ListItemText inset primary={team.team_name} />
                                 <ListItemSecondaryAction>
                                     <IconButton onClick={() => this.deleteTeams(team.id)} aria-label="delete">
-                                        <DeleteForeverIcon />
+                                        <DeleteForeverIcon color="secondary"/>
                                     </IconButton>
                                 </ListItemSecondaryAction>
                             </ListItem>
                         );
                     })}
                 </List>
-
+                </Paper><br />
                 <Link to="/addteam"><Button onClick={this.handleClickAddTeam} variant="contained" color="primary" size="small" >
-                    <AddIcon fontSize="small" /></Button></Link></Paper>
+                    <AddIcon fontSize="small" /></Button></Link>
             </div>
         )
     }

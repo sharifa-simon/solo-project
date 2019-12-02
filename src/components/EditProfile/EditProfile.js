@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import { Button, ButtonGroup } from '@material-ui/core/';
 import { Grid, Select, InputLabel, MenuItem, FormControl } from '@material-ui/core/';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import { Paper } from '@material-ui/core/';
 
 class EditProfile extends Component {
     state = {
@@ -88,8 +89,8 @@ class EditProfile extends Component {
                             );
                         })}
                 </select> */}
-
-
+<Paper>
+<br />
                 <Grid container spacing={1} direction="column" alignItems="center">
 
                     <TextField id="outlined-basic" label="Name" variant="outlined"
@@ -118,6 +119,7 @@ class EditProfile extends Component {
                             labelId="demo-simple-select-outlined-label"
                             id="demo-simple-select-outlined"
                             value={this.state.skater.team_id}
+                            style={{width:`194px`}}
                             onChange={this.handleChangeFor('team_id')}
                         >
                             <MenuItem value="">
@@ -147,7 +149,7 @@ class EditProfile extends Component {
                 <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
-
+</Paper>
             </div>
 
         )

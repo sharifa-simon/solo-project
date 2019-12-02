@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
+import Box from '@material-ui/core/Box';
 
 //material-ui imports
 import Typography from '@material-ui/core/Typography';
@@ -55,7 +56,7 @@ class Profile extends Component {
                 
                 <h3>Profile</h3>
 
-                <Card>
+               <Box display="flex" justifyContent="center"> <Card style={{width: `500px`}}>
                     <CardContent>
 
                         <Typography variant="h5" component="h2" >
@@ -75,18 +76,18 @@ class Profile extends Component {
                         <Button onClick={() => this.editSkater(this.props.profileReducer.id)} size="small" >Edit Profile</Button>
                     </CardActions>
                 </Card>
-
+</Box>
                 <p>Practice History</p>
 
                 <Paper>
                     <Table size="small" aria-label="a dense table">
                         <TableHead>
                             <TableRow>
-                                <TableCell>Date Attended</TableCell>
-                                <TableCell align="right">Status</TableCell>
+                                <TableCell style={{backgroundColor:`#ff6f60`}}>Date Attended</TableCell>
+                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Status</TableCell>
                                 
-                                <TableCell align="right">Edit</TableCell>
-                                <TableCell align="right">Delete</TableCell>
+                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Edit</TableCell>
+                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Delete</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -100,7 +101,7 @@ class Profile extends Component {
                                     <TableCell align="right"><IconButton onClick={() => this.editAttendance(date.id)} edge="end" aria-label="delete">
                                         <EditIcon fontSize="small" />
                                     </IconButton></TableCell>
-                                    <TableCell align="right"><IconButton onClick={() => this.deletePractice(date.id)} edge="end" aria-label="delete">
+                                    <TableCell align="right"><IconButton color="secondary" onClick={() => this.deletePractice(date.id)} edge="end" aria-label="delete">
                                         <DeleteForeverIcon />
                                     </IconButton></TableCell>
                                 </TableRow>
