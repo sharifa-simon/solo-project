@@ -95,7 +95,7 @@ class Roster extends Component {
                         <TableHead>
                             <TableRow>
                                 <TableCell>Skater</TableCell>
-                                <TableCell align="right">Number</TableCell>
+                                <TableCell style={{width:`25px`}} align="right">Number</TableCell>
                                 <TableCell align="right">Position</TableCell>
                                 <TableCell align="right">Attendance</TableCell>
                                 <TableCell align="right">Delete</TableCell>
@@ -116,7 +116,7 @@ class Roster extends Component {
                                             <Select key={skater.id}
                                                 labelId="demo-simple-select-outlined-label"
                                                 id="demo-simple-select-outlined"
-                                                
+                                                style={{width:`100px`}}
                                                 onChange={(event) => this.handleChangeFor(event, skater.id)}>
 
                                                 <MenuItem value="On Skates" >On Skates</MenuItem>

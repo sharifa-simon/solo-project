@@ -92,6 +92,7 @@ class AddSkater extends Component {
                             labelId="demo-simple-select-outlined-label"
                             id="demo-simple-select-outlined"
                             value={this.state.skater.team_id}
+                            style={{width:`194px`}}
                             onChange={this.handleChangeFor('team_id')}
                         >
                             <MenuItem value="">
