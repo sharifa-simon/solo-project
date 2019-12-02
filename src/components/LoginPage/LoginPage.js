@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class LoginPage extends Component {
   state = {
@@ -77,13 +78,13 @@ class LoginPage extends Component {
               /> */}
             </label>
           </div>
-          <div>
-            <input
-              className="log-in"
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
+          <div align="center"><br />
+          <Button variant="contained" color="primary" size="medium"
+          className="log-in"
+          type="submit"
+          name="submit"
+          value="Log In">Log In</Button>
+            
           </div>
         </form>
         <center>

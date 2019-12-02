@@ -85,7 +85,8 @@ class Roster extends Component {
         return (
             <div>
                 <h2>Roster</h2>
-                {this.props.teamReducer.team_name}
+                Begin tracking time by using the attendance dropdown menu
+                <br />or select a skater to view their profile.
                 <h3><TodayDate /></h3>
 
                 <Paper >
@@ -135,6 +136,12 @@ class Roster extends Component {
                 <br />
                 <Button onClick={this.handleClickAddSkater} size="small" variant="contained" color="primary" >
                     <PersonAddIcon  onClick={this.handleClickAddSkater} /></Button>
+                    {/* <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
+                <pre>{JSON.stringify(this.state, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
             </div>
         )
     }

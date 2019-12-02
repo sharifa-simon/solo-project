@@ -9,7 +9,8 @@ const AboutPage = () => (
   <div>
     <div>
       <p>
-        This about page is for anyone to read!
+        Track Time was created, for Minnesota Roller Derby, 
+        <br />to keep attendance for active skaters attending practices.
       </p>
     </div>
   </div>

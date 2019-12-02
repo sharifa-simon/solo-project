@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import moment from 'moment';
 
 //material-ui imports
 import Typography from '@material-ui/core/Typography';
@@ -91,7 +90,8 @@ class Profile extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {this.props.attendReducer.map(date => (
+                        {this.props.attendReducer.map((date) => {
+                            return (
                                 <TableRow key={date.id}>
                                     <TableCell component="th" scope="row">
                                         {date.date}
@@ -104,14 +104,16 @@ class Profile extends Component {
                                         <DeleteForeverIcon />
                                     </IconButton></TableCell>
                                 </TableRow>
-                            ))}
+                            )
+                            })}
+                        
                         </TableBody>
                     </Table>
                 </Paper>
-
-                <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre>
+{/* 
+                <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre> */}
+                {/* <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
             </div>
 
         )

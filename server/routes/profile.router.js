@@ -17,7 +17,7 @@ router.get('/:profileId',  rejectUnauthenticated, (req, res) => {
     });
 })
 
-router.put('/edit/:edit', rejectUnauthenticated, (req, res) => {
+router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
     const newProfile = req.body;
     console.log('PUT /api/profile/edit', newProfile);
     const queryText = `UPDATE skaters

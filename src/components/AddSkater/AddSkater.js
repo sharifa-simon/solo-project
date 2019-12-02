@@ -116,10 +116,10 @@ class AddSkater extends Component {
                 </Grid>
 
 
-                <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
+                {/* <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
               
             </div>
         )

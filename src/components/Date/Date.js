@@ -5,7 +5,7 @@ export default function TodayDate() {
         let date = (tempDate.getMonth()+1) + '-' + tempDate.getDate() + 
         '-' + tempDate.getFullYear() 
         // +' '+ tempDate.getHours()+':'+ tempDate.getMinutes()+':'+ tempDate.getSeconds();
-        const currDate = "Today's Date: "+date; 
+        const currDate = "Practice Date: "+date; 
         
             
   return (

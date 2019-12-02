@@ -10,7 +10,7 @@ const UserPage = (props) => (
     <h1 id="welcome">
       Welcome, { props.user.username }!
     </h1>
-    <p>Your ID is: {props.user.id}</p>
+    {/* <p>Your ID is: {props.user.id}</p> */}
     Add or select a team to begin taking attendance!
     <Teams />
     <br />

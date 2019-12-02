@@ -9,6 +9,7 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 class EditProfile extends Component {
     state = {
         skater: {
+            id: this.props.profileReducer.id,
             name: '',
             team_id: '',
             number: '',
@@ -64,6 +65,7 @@ class EditProfile extends Component {
                 <KeyboardBackspaceIcon fontSize="small" />
             </Button>
                 <h3>Edit Skater</h3>
+                
                 {/* Name:<input
                         type="text"
                         name="name" placeholder={this.props.profileReducer.skater_name}
@@ -138,12 +140,12 @@ class EditProfile extends Component {
                 </Grid>
 
 
-                <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
+                {/* <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
 
             </div>
 
