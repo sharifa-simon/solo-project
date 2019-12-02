@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
+import './Teams.css';
 
 import { Button, IconButton } from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add';
 import { List, ListItem, ListItemText, ListItemSecondaryAction } from '@material-ui/core/';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { Paper } from '@material-ui/core/';
+
 
 class Teams extends Component {
 
@@ -38,7 +41,7 @@ class Teams extends Component {
     render() {
 
         return (
-            <div>
+            <div><Paper>
                 <h3>Teams</h3>
                 <List component="nav" aria-label="contacts">
                     {this.props.teamReducer.map((team) => {
@@ -56,7 +59,7 @@ class Teams extends Component {
                 </List>
 
                 <Link to="/addteam"><Button onClick={this.handleClickAddTeam} variant="contained" color="primary" size="small" >
-                    <AddIcon fontSize="small" /></Button></Link>
+                    <AddIcon fontSize="small" /></Button></Link></Paper>
             </div>
         )
     }

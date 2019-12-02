@@ -18,6 +18,7 @@ router.get('/:profileId',  rejectUnauthenticated, (req, res) => {
 })
 
 router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
+//updates a skater's profile on DOM and in database
     const newProfile = req.body;
     console.log('PUT /api/profile/edit', newProfile);
     const queryText = `UPDATE skaters
@@ -25,7 +26,7 @@ router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
     WHERE id=$1;`;
     const queryValues = [
         newProfile.id,
-        newProfile.skater_name,
+        newProfile.name,
         newProfile.team_id,
         newProfile.number,
         newProfile.position,

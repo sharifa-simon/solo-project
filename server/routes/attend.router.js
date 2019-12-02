@@ -36,6 +36,8 @@ router.post('/',  rejectUnauthenticated,(req, res) => {
 router.delete('/:id',  rejectUnauthenticated, (req, res) => {
     //removes user selected attendance date from database
     const queryText = 'DELETE FROM attendance WHERE id=$1';
+    console.log('this thing', req.params.id)
+    
     pool.query(queryText, [req.params.id])
         .then(() => { res.sendStatus(200); })
         .catch((err) => {

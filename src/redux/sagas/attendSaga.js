@@ -26,7 +26,7 @@ function* attendDetails(action) {
 function* removePractice(action) {
     //communicates with server side to remove skater from database
     try {
-        yield axios.delete(`/api/attend/${action.payload}`);
+        yield axios.delete(`/api/attend/${action.payload.id}`);
         yield put({ type: 'GET_ATTEND' });
     } catch (error) {
         console.log('error deleting practice', error);

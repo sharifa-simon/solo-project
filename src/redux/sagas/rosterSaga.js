@@ -33,8 +33,8 @@ function* removeSkater(action) {
     //communicates with server side to remove skater from database
     try {
         yield axios.delete(`/api/roster/${action.payload}`);
-        yield put({ type: 'GET_ROSTER' });
-    } catch (error) {
+        yield put({ type: 'GET_ROSTER', });
+    } catch (error) { 
         console.log('error deleting skater', error);
     }
 }

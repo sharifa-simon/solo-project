@@ -85,8 +85,9 @@ class Roster extends Component {
         return (
             <div>
                 <h2>Roster</h2>
-                Begin tracking time by using the attendance dropdown menu
-                <br />or select a skater to view their profile.
+                Begin tracking time by using the attendance dropdown menu,
+                <br />select a skater to view their profile,
+                or add a skater to this roster.
                 <h3><TodayDate /></h3>
 
                 <Paper >
@@ -118,9 +119,9 @@ class Roster extends Component {
                                                 
                                                 onChange={(event) => this.handleChangeFor(event, skater.id)}>
 
-                                                <MenuItem value="On Skates">On Skates</MenuItem>
-                                                <MenuItem value="Off Skates">Off</MenuItem>
-                                                <MenuItem value="No">No</MenuItem>
+                                                <MenuItem value="On Skates" >On Skates</MenuItem>
+                                                <MenuItem value="Off Skates" >Off</MenuItem>
+                                                <MenuItem value="No" >No</MenuItem>
                                             </Select>
 
                                         </FormControl> </TableCell>

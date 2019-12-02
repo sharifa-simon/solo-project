@@ -39,7 +39,7 @@ class Profile extends Component {
         console.log('DELETE:', dateid);
 
         //deletes selected button's skater to remove from redux state and database
-        this.props.dispatch({ type: 'DELETE_PRACTICE', payload: dateid });
+        this.props.dispatch({ type: 'DELETE_PRACTICE', payload: {id: dateid} });
     }
 
 

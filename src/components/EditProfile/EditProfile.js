@@ -19,7 +19,6 @@ class EditProfile extends Component {
 
     componentDidMount() {
         this.getTeams();
-
     }
 
     getTeams = () => {
@@ -64,8 +63,8 @@ class EditProfile extends Component {
                 onClick={this.handleCancelClick}>
                 <KeyboardBackspaceIcon fontSize="small" />
             </Button>
-                <h3>Edit Skater</h3>
-                
+                <h3>Edit Profile for: {this.props.profileReducer.skater_name}</h3>
+
                 {/* Name:<input
                         type="text"
                         name="name" placeholder={this.props.profileReducer.skater_name}
@@ -96,16 +95,19 @@ class EditProfile extends Component {
                     <TextField id="outlined-basic" label="Name" variant="outlined"
                         type="text"
                         name="name"
+                        placeholder={this.props.profileReducer.skater_name}
                         value={this.state.skater.name} onChange={this.handleInputChangeForNewSkater} />
                     <br />
                     <TextField id="outlined-basic" label="Number" variant="outlined"
                         type="number"
                         name="number"
+                        placeholder={this.props.profileReducer.number}
                         value={this.state.skater.number} onChange={this.handleInputChangeForNewSkater} />
                     <br />
                     <TextField id="outlined-basic" label="Position" variant="outlined"
                         type="text"
                         name="position"
+                        placeholder={this.props.profileReducer.position}
                         value={this.state.skater.position} onChange={this.handleInputChangeForNewSkater} />
                     <br />
                     <FormControl variant="outlined">
@@ -132,7 +134,6 @@ class EditProfile extends Component {
                     <Grid item xs={12} md={6}>
                         <ButtonGroup variant="contained"
                             color="primary" aria-label="full width outlined button group" size="small">
-
                             <Button onClick={this.handleSaveProfile}>Save Profile</Button>
 
                         </ButtonGroup>

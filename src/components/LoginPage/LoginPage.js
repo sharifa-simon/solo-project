@@ -78,7 +78,7 @@ class LoginPage extends Component {
               /> */}
             </label>
           </div>
-          <div align="center"><br />
+          <div><br />
           <Button variant="contained" color="primary" size="medium"
           className="log-in"
           type="submit"

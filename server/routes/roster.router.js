@@ -11,7 +11,6 @@ router.get(`/:teamId`,  rejectUnauthenticated,(req, res) => {
     pool.query(`SELECT * FROM "skaters" 
     WHERE "team_id"=$1;`, [req.params.teamId]).then((result) => {
         res.send(result.rows);
-        console.log('GET /api/roster', result.rows);
     }).catch((error) => {
         console.log('Error GET /api/roster', error)
         res.sendStatus(500);
