@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-        <AppBar position="static">
+        <AppBar color="primary" position="static">
                 <Toolbar>
                     <IconButton  edge="start" color="inherit" aria-label="menu">
                     <SimpleMenu />

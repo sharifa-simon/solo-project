@@ -11,6 +11,7 @@ import { Paper } from '@material-ui/core/';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core/';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 class Profile extends Component {
 
@@ -47,7 +48,12 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                <button onClick={() => this.handleBackButton(this.props.profileReducer.team_id)}>Back to Roster</button>
+                <br />
+                <Button variant="contained" color="secondary" size="small" 
+                onClick={() => this.handleBackButton(this.props.profileReducer.team_id)}>
+                <KeyboardBackspaceIcon fontSize="small"/> 
+                </Button>
+                
                 <h3>Profile</h3>
 
                 <Card>

@@ -20,8 +20,12 @@ class Roster extends Component {
     }
 
     componentDidMount() {
-        // this.getRoster();
+        this.getRoster();
         // this.forHistory();
+        // this.props.dispatch({ type: 'GET_ROSTER', payload: this.props.match.params.teamId });
+    }
+
+    getRoster = () => {
         this.props.dispatch({ type: 'GET_ROSTER', payload: this.props.match.params.teamId });
     }
 
@@ -125,7 +129,7 @@ class Roster extends Component {
                 </Paper>
 
                 <br />
-                <Button size="small" variant="contained" color="primary" >
+                <Button onClick={this.handleClickAddSkater} size="small" variant="contained" color="primary" >
                     <PersonAddIcon fontSize="medium" onClick={this.handleClickAddSkater} /></Button>
             </div>
         )

@@ -16,8 +16,17 @@ import App from './components/App/App';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: red[500] },
-    secondary: { main: "#d32f2f" },
+    
+    primary: { 
+      main: red[500],
+      light: "#ff7961",
+      dark: "#ba000d",
+     },
+
+    secondary: { 
+      main: "#c62828",
+    light: "#ff5f52" },
+    dark: "#8e0000",
   },
 
 });

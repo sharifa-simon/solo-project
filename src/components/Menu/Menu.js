@@ -23,7 +23,7 @@ export default function SimpleMenu() {
         <>
             <MenuIcon aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} />
 
-            <Menu
+            <Menu 
                 id="simple-menu"
                 anchorEl={anchorEl}
                 keepMounted

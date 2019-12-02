@@ -36,6 +36,7 @@ class Teams extends Component {
     }
 
     render() {
+
         return (
             <div>
                 <h3>Teams</h3>
@@ -54,7 +55,7 @@ class Teams extends Component {
                     })}
                 </List>
 
-                <Link to="/addteam"><Button onClick={this.handleClickAddTeam} variant="contained" color="secondary" size="small" >
+                <Link to="/addteam"><Button onClick={this.handleClickAddTeam} variant="contained" color="primary" size="small" >
                     <AddIcon fontSize="small" /></Button></Link>
             </div>
         )
