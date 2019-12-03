@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Grid from '@material-ui/core/Grid';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import { Paper } from '@material-ui/core/';
 
 class AddTeam extends Component {
     state = {
@@ -41,6 +42,8 @@ class AddTeam extends Component {
                     <KeyboardBackspaceIcon fontSize="small" />
                 </Button>
                 <h3>Add New Team</h3>
+                <Paper>
+                    <br />
                 <Grid container spacing={1} direction="column" alignItems="center">
 
                     <TextField id="outlined-basic" label="Team Name" variant="outlined"
@@ -58,7 +61,7 @@ class AddTeam extends Component {
                         </ButtonGroup>
                     </Grid>
                 </Grid>
-
+                </Paper>
             </div>
 
         )

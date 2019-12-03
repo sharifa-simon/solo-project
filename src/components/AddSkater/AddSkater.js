@@ -5,6 +5,7 @@ import { Button, ButtonGroup } from '@material-ui/core/';
 import { Grid, Select, InputLabel, MenuItem, FormControl } from '@material-ui/core/';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import { Paper } from '@material-ui/core/';
+
 class AddSkater extends Component {
     state = {
         skater: {
