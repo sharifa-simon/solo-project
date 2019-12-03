@@ -32,8 +32,8 @@ function* rosterDetails(action) {
 function* removeSkater(action) {
     //communicates with server side to remove skater from database
     try {
-        yield axios.delete(`/api/roster/${action.payload}`);
-        yield put({ type: 'GET_ROSTER', });
+        yield axios.delete(`/api/roster/${action.payload.id}`);
+        yield put({ type: 'GET_ROSTER', payload: action.payload.team_id });
     } catch (error) { 
         console.log('error deleting skater', error);
     }
