@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/:date', rejectUnauthenticated, (req, res) => {
     console.log('GET /api/attend/');
-    pool.query(`SELECT "attend_type", to_char("date",'MM-DD-YYYY') as "date", "id" FROM "attendance" WHERE skater_id=$1 ORDER BY "date" DESC;`, [req.params.date]).then((result) => {
+    pool.query(`SELECT "attend_type", to_char("date",'MM-DD-YYYY') as "date", "id", "skater_id" FROM "attendance" WHERE skater_id=$1 ORDER BY "date" DESC;`, [req.params.date]).then((result) => {
         res.send(result.rows);
     }).catch((error) => {
         console.log('Error GET /api/attend', error)

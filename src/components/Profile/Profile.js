@@ -40,7 +40,7 @@ class Profile extends Component {
         console.log('DELETE:', dateid);
 
         //deletes selected button's skater to remove from redux state and database
-        this.props.dispatch({ type: 'DELETE_PRACTICE', payload: { id: dateid } });
+        this.props.dispatch({ type: 'DELETE_PRACTICE', payload: dateid,  });
     }
 
     render() {
@@ -100,7 +100,7 @@ class Profile extends Component {
                                         <TableCell align="right"><IconButton onClick={() => this.editAttendance(date.id)} edge="end" aria-label="delete">
                                             <EditIcon fontSize="small" />
                                         </IconButton></TableCell>
-                                        <TableCell align="right"><IconButton color="secondary" onClick={() => this.deletePractice(date.id)} edge="end" aria-label="delete">
+                                        <TableCell align="right"><IconButton color="secondary" onClick={() => this.deletePractice(date)} edge="end" aria-label="delete">
                                             <DeleteForeverIcon />
                                         </IconButton></TableCell>
                                     </TableRow>
@@ -110,10 +110,10 @@ class Profile extends Component {
                         </TableBody>
                     </Table>
                 </Paper>
-                {/* 
-                <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre> */}
-                {/* <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
+                
+                <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre>
             </div>
 
         )
