@@ -18,7 +18,7 @@ function* editProfile(action) {
     try {
         yield axios.put(`/api/profile/edit/${action.payload.id}`, action.payload);
         console.log('NEW PROFILE MAYBE', action.payload);
-        yield put({ type: 'GET_PROFILE', payload: action.id })
+        yield put({ type: 'GET_PROFILE', payload: action.payload.id })
     } catch (error) {
         console.log('error editing profile', error);
     }

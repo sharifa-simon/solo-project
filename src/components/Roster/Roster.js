@@ -95,7 +95,7 @@ class Roster extends Component {
                         <TableHead>
                             <TableRow>
                                 <TableCell style={{backgroundColor:`#ff6f60`}}>Skater</TableCell>
-                                <TableCell style={{width:`25px`}} style={{backgroundColor:`#ff6f60`}} align="right">Number</TableCell>
+                                <TableCell style={{backgroundColor:`#ff6f60`, width:`25px`}} align="right">Number</TableCell>
                                 <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Position</TableCell>
                                 <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Attendance</TableCell>
                                 <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Delete</TableCell>
