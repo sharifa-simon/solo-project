@@ -94,18 +94,18 @@ class Roster extends Component {
                     <Table size="small" aria-label="a dense table">
                         <TableHead>
                             <TableRow>
-                                <TableCell style={{backgroundColor:`#ff6f60`}}>Skater</TableCell>
-                                <TableCell style={{backgroundColor:`#ff6f60`, width:`25px`}} align="right">Number</TableCell>
-                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Position</TableCell>
-                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Attendance</TableCell>
-                                <TableCell style={{backgroundColor:`#ff6f60`}} align="right">Delete</TableCell>
+                                <TableCell style={{ backgroundColor: `#ff6f60` }}>Skater</TableCell>
+                                <TableCell style={{ backgroundColor: `#ff6f60`, width: `25px` }} align="right">Number</TableCell>
+                                <TableCell style={{ backgroundColor: `#ff6f60` }} align="right">Position</TableCell>
+                                <TableCell style={{ backgroundColor: `#ff6f60` }} align="right">Attendance</TableCell>
+                                <TableCell style={{ backgroundColor: `#ff6f60` }} align="right">Delete</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {this.props.rosterReducer.map(skater => (
                                 <TableRow key={skater.id}>
                                     <TableCell component="th" scope="row">
-                                        <Button  size="small" onClick={() => this.selectSkater(skater.id)}> {skater.skater_name}</Button>
+                                        <Button size="small" onClick={() => this.selectSkater(skater.id)}> {skater.skater_name}</Button>
                                     </TableCell>
                                     <TableCell align="right">{skater.number}</TableCell>
                                     <TableCell align="right">{skater.position}</TableCell>
@@ -116,7 +116,7 @@ class Roster extends Component {
                                             <Select key={skater.id}
                                                 labelId="demo-simple-select-outlined-label"
                                                 id="demo-simple-select-outlined"
-                                                style={{width:`100px`}}
+                                                style={{ width: `100px` }}
                                                 onChange={(event) => this.handleChangeFor(event, skater.id)}>
 
                                                 <MenuItem value="On Skates" >On Skates</MenuItem>
@@ -136,8 +136,8 @@ class Roster extends Component {
 
                 <br />
                 <Button onClick={this.handleClickAddSkater} size="small" variant="contained" color="primary" >
-                    <PersonAddIcon  onClick={this.handleClickAddSkater} /></Button>
-                    <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
+                    <PersonAddIcon onClick={this.handleClickAddSkater} /></Button>
+                <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>

@@ -27,8 +27,8 @@ class AddSkater extends Component {
 
     handleCancelClick = () => {
         //takes user back to Roster page
-        console.log('Cancel clicked', this.props.match.params.teamId);
-        // this.props.history.push(`/roster/${this.props.match.params.teamId} `)
+        console.log('Cancel clicked');
+        this.props.history.push(`/teams`);
     }
 
     handleAddSkater = (addteam) => {
@@ -120,10 +120,10 @@ class AddSkater extends Component {
                 </Grid>
 
 
-                {/* <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
+                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre>
               </Paper>
             </div>
         )

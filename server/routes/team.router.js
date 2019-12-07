@@ -6,9 +6,23 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     //brings teams from database to client side
-    pool.query('SELECT * FROM "teams";').then((result) => {
-        res.send(result.rows);
-    }).catch((error) => {
+    pool.query('SELECT * FROM "teams";').then((result)=>{
+        const createdTeam = [];
+        for (let i = 0; i < result.rows.length; i++) {
+            
+            if (result.rows[i].created_id === req.user.id){
+                createdTeam.push(result.rows[i])
+            }
+            console.log('CREATED TEAM', createdTeam);
+            
+            
+        }
+        res.send(createdTeam)
+    })
+
+
+    
+    .catch((error) => {
         console.log('Error GET /api/teams', error);
         res.sendStatus(500);
     });
@@ -18,11 +32,14 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
     //takes inputted value from addTeam page and adds to the database
     const newTeam = req.body.team;
+    const byUser = req.user.id
     console.log('new team', req.body);
-    const queryText = `INSERT INTO teams ("team_name")
-                      VALUES ($1)`;
+    console.log('new USER team', req.user);
+    const queryText = `INSERT INTO teams ("team_name", "created_id")
+                      VALUES ($1, $2)`;
     const queryValues = [
         newTeam,
+        byUser,
     ];
     pool.query(queryText, queryValues)
         .then(() => { res.sendStatus(201); })
