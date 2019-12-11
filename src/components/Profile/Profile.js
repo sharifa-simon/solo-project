@@ -110,10 +110,10 @@ class Profile extends Component {
                         </TableBody>
                     </Table>
                 </Paper>
-                
+{/*                 
                 <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
             </div>
 
         )

@@ -14,14 +14,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                 createdTeam.push(result.rows[i])
             }
             console.log('CREATED TEAM', createdTeam);
-            
-            
         }
         res.send(createdTeam)
-    })
-
-
-    
+    })    
     .catch((error) => {
         console.log('Error GET /api/teams', error);
         res.sendStatus(500);

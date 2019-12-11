@@ -137,12 +137,12 @@ class Roster extends Component {
                 <br />
                 <Button onClick={this.handleClickAddSkater} size="small" variant="contained" color="primary" >
                     <PersonAddIcon onClick={this.handleClickAddSkater} /></Button>
-                <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
+                {/* <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
                 <pre>{JSON.stringify(this.state, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
                 <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre>
+                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
             </div>
         )
     }
