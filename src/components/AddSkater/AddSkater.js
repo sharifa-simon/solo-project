@@ -64,14 +64,9 @@ class AddSkater extends Component {
             <KeyboardBackspaceIcon fontSize="small" /></Button>
                 <h3>Add New Skater</h3>
 
-                
-                {/* <br /> <Link to="/roster/:teamId"><button onClick={this.handleCancelClick}>Cancel</button></Link>
-                <Link to="/roster/:teamId"> <button onClick={this.handleAddSkater}>Add Skater</button></Link> */}
-
 <Paper>
     <br />
                 <Grid container spacing={1} direction="column" alignItems="center">
-
                     <TextField id="outlined-basic" label="Name" variant="outlined"
                         type="text"
                         name="name"
@@ -111,10 +106,8 @@ class AddSkater extends Component {
 
                     <Grid item xs={12} md={6}>
                         <ButtonGroup variant="contained"
-                            color="primary" aria-label="full width outlined button group" size="small">
-                            
+                            color="primary" aria-label="full width outlined button group" size="small"> 
                             <Button onClick={this.handleAddSkater}>Add To Roster</Button>
-
                         </ButtonGroup>
                     </Grid>
                 </Grid>
