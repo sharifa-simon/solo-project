@@ -12,8 +12,8 @@ const AboutPage = () => (
   <Paper>
     <div>
       <p>
-        Track Time was created, for Minnesota Roller Derby, 
-        <br />to keep attendance for active skaters attending practices.
+        Track Time was created as a simple application, for Minnesota Roller Derby, 
+        <br />to keep attendance for active skaters attending practices. It is currently in Beta and unfinished.
       </p>
     </div>
     </Paper>
