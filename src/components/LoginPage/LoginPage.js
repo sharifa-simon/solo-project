@@ -54,12 +54,7 @@ class LoginPage extends Component {
               value={this.state.username}
               onChange={this.handleInputChangeFor('username')}
               />
-              {/* <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              /> */}
+        
             </label>
           </div>
           <div>
@@ -71,12 +66,7 @@ class LoginPage extends Component {
               value={this.state.password}
               onChange={this.handleInputChangeFor('password')}
               />
-              {/* <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              /> */}
+          
             </label>
           </div>
           <div><br />

@@ -11,7 +11,7 @@ function* addSkater(action) {
     //sends inputted user value from AddSkater to server side post route
     try {
         yield axios.post('/api/roster', action.payload);
-        // yield put({ type: 'GET_ROSTER' })
+        yield put({ type: 'GET_ROSTER', payload: action.payload.team_id })
     } catch (error) {
         console.log('error posting skater', error);
     }
