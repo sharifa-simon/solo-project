@@ -18,18 +18,17 @@ function* addTeam(action) {
 }
 
 function* getTeam(action) {
-    //gets database information and sends to client side
+    // requests database information and sends to client side
     try {
         const teamResponse = yield axios.get('/api/teams');
         yield put({ type: 'SET_TEAM', payload: teamResponse.data });
-        console.log('getTeam was hit with action:', action);
     } catch (error) {
         console.log('error fetching teams', error);
     }
 }
 
 function* removeTeam(action) {
-    //communicates with server side to remove team from database
+    // communicates with server side to remove team from database
     try {
         yield axios.delete(`/api/teams/${action.payload}`);
         yield put({ type: 'GET_TEAM' });

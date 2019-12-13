@@ -20,54 +20,31 @@ class Roster extends Component {
 
     componentDidMount() {
         this.getRoster();
-        // this.forHistory();
-        // this.props.dispatch({ type: 'GET_ROSTER', payload: this.props.match.params.teamId });
     }
 
     getRoster = () => {
         this.props.dispatch({ type: 'GET_ROSTER', payload: this.props.match.params.teamId });
     }
 
-    submitFormHandler = event => {
-        console.log('submit clicked');
-        event.preventDefault();
-        this.props.dispatch({ type: 'POST_ATTEND', payload: this.state.practice });
-    }
-
     handleClickAddSkater = () => {
-        //takes user to another page to add a Team
-        console.log('Moving to Add Skater:');
+        // moves user to another page to add a Team
         this.props.history.push(`/addskater`);
     }
 
     deleteSkater = (skaterid) => {
-        console.log('DELETE:', skaterid);
-        //deletes selected button's skater to remove from redux state and database
+        // deletes selected button's skater to remove from redux state and database
         this.props.dispatch({ type: 'DELETE_SKATER', payload: skaterid });
     }
 
-    // getRoster = () => {
-    //     this.props.dispatch({ type: 'GET_ROSTER' });
-    // }
-
     selectSkater = (skaterClicked) => {
-        //clicked skater button moves user to profile with id
-        console.log('Skater clicked:', skaterClicked);
+        // clicked skater button moves user to profile with id
         this.props.dispatch({ type: 'GET_PROFILE', payload: skaterClicked });
         this.props.history.push(`/profile/${skaterClicked}`);
     }
 
 
     handleChangeFor = (attend_type, skater_id) => {
-
         this.props.dispatch({ type: 'POST_ATTEND', payload: { event: attend_type.target.value, skater_id } });
-        // this.setState({
-        //     practice: {
-        //         ...this.state.practice,
-        //         attend_type: attend_type.target.value,
-        //         skater_id: skater_id,
-        //     }
-        // });
     }
 
     handleForID = propertyName => event => {
@@ -137,12 +114,6 @@ class Roster extends Component {
                 <br />
                 <Button onClick={this.handleClickAddSkater} size="small" variant="contained" color="primary" >
                     <PersonAddIcon onClick={this.handleClickAddSkater} /></Button>
-                {/* <pre>{JSON.stringify(this.props.reduxState, null, 2)}</pre>
-                <pre>{JSON.stringify(this.state, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.teamReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
             </div>
         )
     }

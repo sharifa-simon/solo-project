@@ -8,27 +8,24 @@ function* attendSaga() {
 }
 
 function* addAttend(action) {
-    //sends user selected values from Roster to server side attend post route
+    // sends user selected values from Roster to server side attend post route
     try {
         yield axios.post('/api/attend/',  action.payload);
-        // yield put({ type: 'GET_ATTEND' })
     } catch (error) {
         console.log('error posting attendance', error);
     }
 }
 
 function* attendDetails(action) {
-    console.log('attendance details', action);
+    // requests attedance data, for a skater, from database
     const attendDetailsResponse = yield axios.get(`/api/attend/${action.payload}`);
     yield put({ type: 'SET_ATTEND', payload: attendDetailsResponse.data});
 }
 
 function* removePractice(action) {
-    console.log('what is this', action)
-    //communicates with server side to remove skater from database
+    // communicates with server side to remove skater from database
     try {
         yield axios.delete(`/api/attend/${action.payload.id}`);
-        console.log('FIXING DELETE+GET', action )
         yield put({ type: 'GET_ATTEND', payload: action.payload.skater_id });
     } catch (error) {
         console.log('error deleting practice', error);

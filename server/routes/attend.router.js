@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.get('/:date', rejectUnauthenticated, (req, res) => {
-    console.log('GET /api/attend/');
+   // asks database for formatted dates for a skater by their id
     pool.query(`SELECT "attend_type", to_char("date",'MM-DD-YYYY') as "date", "id", "skater_id" 
     FROM "attendance" WHERE skater_id=$1 ORDER BY "date" DESC;`, [req.params.date]).then((result) => {
         res.send(result.rows);
@@ -17,8 +17,8 @@ router.get('/:date', rejectUnauthenticated, (req, res) => {
 })
 
 router.post('/', rejectUnauthenticated, (req, res) => {
+    // adds the selected attendance status(on skates, off skates, no), from drop down list in Roster component, to database
     const newPractice = req.body;
-    console.log('new attendance', req.body);
     const queryText = `INSERT INTO attendance ("skater_id", "attend_type")
                       VALUES ($1, $2)`;
     const queryValues = [
@@ -34,10 +34,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
-    //removes user selected attendance date from database
+    // removes user selected attendance date from database
     const queryText = 'DELETE FROM attendance WHERE id=$1';
     console.log('this thing', req.params.id)
-
     pool.query(queryText, [req.params.id])
         .then(() => { res.sendStatus(200); })
         .catch((err) => {

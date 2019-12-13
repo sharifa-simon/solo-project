@@ -22,18 +22,17 @@ class Teams extends Component {
     }
 
     deleteTeams = (id) => {
-        //deletes selected button's team to remove from redux state and database
+        // deletes selected button's team to remove from redux state and database
         this.props.dispatch({ type: 'DELETE_TEAM', payload: id });
     }
 
     handleClickAddTeam = () => {
-        //takes user to another page to add a Team
-        console.log('Moving to Add Team');
+        // takes user to another page to add a Team
+        // currently, function is not being used. user is being directed via Link
     }
 
     viewTeam = (teamClicked) => {
-        //clicked team's select button to move user to roster with id
-        console.log('Team clicked:', teamClicked);
+        // clicked team's select button to move user to roster with id
         this.props.dispatch({ type: 'GET_ROSTER', payload: teamClicked });
         this.props.history.push(`/roster/${teamClicked}`);
     }

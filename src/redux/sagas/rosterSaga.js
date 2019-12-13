@@ -18,28 +18,25 @@ function* addSkater(action) {
 }
 
 function* rosterDetails(action) {
-    //communicates with server route to get skaters from database
-    console.log('LOOK AT THIS', action.payload)
+    // communicates with server route to get skaters from database
     try {
         const rosterResponse = yield axios.get(`/api/roster/${action.payload}`);
         yield put({ type: 'SET_ROSTER', payload: rosterResponse.data });
-        console.log('rosterDetails was hit with action:', rosterResponse.data);
     } catch (error) {
         console.log('error fetching skaters', error);
     }
 }
 
 function* removeSkater(action) {
-    //communicates with server side to remove skater from database
+    // communicates with server side to remove a skater from database
     try {
         yield axios.delete(`/api/roster/${action.payload.id}`);
         yield put({ type: 'GET_ROSTER', payload: action.payload.team_id });
-    } catch (error) { 
+    } catch (error) {
         console.log('error deleting skater', error);
     }
 }
-// const movieGenresResponse = yield axios.get(`/api/movies/genres/${action.payload.id}`);
-// yield put({ type: 'SET_GENRES', payload: movieGenresResponse.data});
+
 
 
 export default rosterSaga;

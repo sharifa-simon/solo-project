@@ -16,30 +16,24 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 class Profile extends Component {
 
     handleBackButton = (teamroster) => {
-        console.log('Back to roster', teamroster);
         this.props.history.push(`/roster/${teamroster}`);
     }
 
     editSkater = (skaterprofile) => {
-        console.log('edit skater clicked', skaterprofile);
         this.props.history.push(`/profile/edit/${skaterprofile}`)
     }
 
     componentDidMount() {
-        // this.getProfile();
-        // this.getAttend();
         this.props.dispatch({ type: 'GET_PROFILE', payload: this.props.match.params.profileId });
         this.props.dispatch({ type: 'GET_ATTEND', payload: this.props.match.params.profileId });
     }
 
     editAttendance = (practice) => {
-        console.log('This date clicked', practice)
+       // will allow a user to edit date and attendance type
     }
 
     deletePractice = (dateid) => {
-        console.log('DELETE:', dateid);
-
-        //deletes selected button's skater to remove from redux state and database
+        // deletes selected button's skater to remove from redux state and database
         this.props.dispatch({ type: 'DELETE_PRACTICE', payload: dateid,  });
     }
 
@@ -110,10 +104,6 @@ class Profile extends Component {
                         </TableBody>
                     </Table>
                 </Paper>
-{/*                 
-                <pre>{JSON.stringify(this.props.attendReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.profileReducer, null, 2)}</pre>
-                <pre>{JSON.stringify(this.props.match.params, null, 2)}</pre> */}
             </div>
 
         )
