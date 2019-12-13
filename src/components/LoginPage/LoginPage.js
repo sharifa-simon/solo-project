@@ -41,7 +41,7 @@ class LoginPage extends Component {
             role="alert"
           >
             {this.props.errors.loginMessage}
-          </h2>
+          </h2> 
         )}<Paper>
         <form onSubmit={this.login}>
           <h2>Login</h2>
