@@ -33,7 +33,7 @@ class AddSkater extends Component {
 
     handleAddSkater = (addteam) => {
         //adds new Skater to Database and returns user to roster page
-        console.log('Adding Skater', addteam);
+        console.log('Adding Skater', addteam.team_id);
         this.props.dispatch({ type: 'POST_SKATER', payload: this.state.skater });
         this.props.history.push(`/roster/${this.state.skater.team_id}`)
     }
